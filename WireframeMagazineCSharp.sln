@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModularSprites", "ModularSp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpPhysics", "JumpPhysics\JumpPhysics.csproj", "{FC6B91C1-EE36-4AC1-B61A-DEA371993A97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoomFire", "DoomFire\DoomFire.csproj", "{325C9AE0-6D72-4E2E-9D8E-A033D67FB5C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{FC6B91C1-EE36-4AC1-B61A-DEA371993A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC6B91C1-EE36-4AC1-B61A-DEA371993A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC6B91C1-EE36-4AC1-B61A-DEA371993A97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{325C9AE0-6D72-4E2E-9D8E-A033D67FB5C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{325C9AE0-6D72-4E2E-9D8E-A033D67FB5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{325C9AE0-6D72-4E2E-9D8E-A033D67FB5C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{325C9AE0-6D72-4E2E-9D8E-A033D67FB5C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
