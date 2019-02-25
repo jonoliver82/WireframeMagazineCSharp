@@ -17,4 +17,6 @@ Water Ripple - [2D Water](https://web.archive.org/web/20160418004149/http://free
 
 Doom Fire - [DoomFirePSX](https://github.com/fabiensanglard/DoomFirePSX)
 
+Fizzlefade - [Fizzlefade](http://fabiensanglard.net/fizzlefade/)
+
 Built in Visual Studio 2015 using .NET Framework 4.5.2

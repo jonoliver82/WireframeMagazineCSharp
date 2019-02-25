@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpPhysics", "JumpPhysics\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoomFire", "DoomFire\DoomFire.csproj", "{325C9AE0-6D72-4E2E-9D8E-A033D67FB5C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fizzlefade", "Fizzlefade\Fizzlefade.csproj", "{91144BF7-E425-4446-A23A-CE3DF0030167}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{325C9AE0-6D72-4E2E-9D8E-A033D67FB5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{325C9AE0-6D72-4E2E-9D8E-A033D67FB5C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{325C9AE0-6D72-4E2E-9D8E-A033D67FB5C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91144BF7-E425-4446-A23A-CE3DF0030167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91144BF7-E425-4446-A23A-CE3DF0030167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91144BF7-E425-4446-A23A-CE3DF0030167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91144BF7-E425-4446-A23A-CE3DF0030167}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
