@@ -10,6 +10,7 @@ Issue 6 - [Modular Sprites](https://github.com/Wireframe-Magazine/Wireframe-6/tr
 
 Issue 7 - [Jump Physics](https://github.com/Wireframe-Magazine/Wireframe-7)
 
+Issue 8 - [Missiles](https://github.com/Wireframe-Magazine/Wireframe-8)
 
 Additional projects using the same Core classes:
 
