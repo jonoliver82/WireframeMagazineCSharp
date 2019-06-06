@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Adapters\DateTimeAdapter.cs" />
     <Compile Include="Adapters\RandomAdapter.cs" />
+    <Compile Include="Interop\GDI.cs" />
     <Compile Include="Views\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +71,12 @@
       <DependentUpon>KeyboardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="KeyboardGame.cs" />
+    <Compile Include="Views\ManagedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ManagedForm.Designer.cs">
+      <DependentUpon>ManagedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MouseForm.cs">
       <SubType>Form</SubType>
     </Compile>

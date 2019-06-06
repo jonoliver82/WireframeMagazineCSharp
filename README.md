@@ -12,6 +12,8 @@ Issue 7 - [Jump Physics](https://github.com/Wireframe-Magazine/Wireframe-7)
 
 Issue 8 - [Missiles](https://github.com/Wireframe-Magazine/Wireframe-8)
 
+Issue 9 - [Invaders](https://github.com/Wireframe-Magazine/Wireframe-9)
+
 Additional projects using the same Core classes:
 
 Water Ripple - [2D Water](https://web.archive.org/web/20160418004149/http://freespace.virgin.net/hugo.elias/graphics/x_water.htm)
