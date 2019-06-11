@@ -15,6 +15,11 @@ namespace Core.Services
             Application.Run(view as Form);
         }
 
+        public void Run(Form view)
+        {
+            Application.Run(view);
+        }
+
         public void Run(IApplicationContext context)
         {
             Application.Run(context as ApplicationContext);

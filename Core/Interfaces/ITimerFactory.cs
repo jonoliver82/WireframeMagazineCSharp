@@ -7,12 +7,8 @@ using System.Windows.Forms;
 
 namespace Core.Interfaces
 {
-    public interface IApplicationService
+    public interface ITimerFactory
     {
-        void Run(IGameView view);
-
-        void Run(Form view);
-
-        void Run(IApplicationContext context);
+        Timer Create(Action action, int intervalMs);
     }
 }

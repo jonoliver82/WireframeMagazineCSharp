@@ -48,7 +48,14 @@
   <ItemGroup>
     <Compile Include="Adapters\DateTimeAdapter.cs" />
     <Compile Include="Adapters\RandomAdapter.cs" />
+    <Compile Include="Factories\TimerFactory.cs" />
+    <Compile Include="Interfaces\IGraphicsService.cs" />
+    <Compile Include="Interfaces\ISpriteService.cs" />
+    <Compile Include="Interfaces\ITimerFactory.cs" />
     <Compile Include="Interop\GDI.cs" />
+    <Compile Include="PyGame.cs" />
+    <Compile Include="Services\GraphicsService.cs" />
+    <Compile Include="Services\SpriteService.cs" />
     <Compile Include="Views\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +94,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RenderInformation.cs" />
     <Compile Include="Services\WindowsFormsApplicationService.cs" />
+    <Compile Include="Views\ManagedPyGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ManagedPyGameForm.Designer.cs">
+      <DependentUpon>ManagedPyGameForm.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\BaseForm.resx">
@@ -97,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MouseForm.resx">
       <DependentUpon>MouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ManagedPyGameForm.resx">
+      <DependentUpon>ManagedPyGameForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
