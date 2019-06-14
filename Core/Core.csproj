@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Adapters\DateTimeAdapter.cs" />
     <Compile Include="Adapters\RandomAdapter.cs" />
+    <Compile Include="Views\DefaultPyGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DefaultPyGameForm.Designer.cs">
+      <DependentUpon>DefaultPyGameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Factories\TimerFactory.cs" />
     <Compile Include="Interfaces\IGraphicsService.cs" />
     <Compile Include="Interfaces\ISpriteService.cs" />
@@ -104,6 +110,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Views\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DefaultPyGameForm.resx">
+      <DependentUpon>DefaultPyGameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\KeyboardForm.resx">
       <DependentUpon>KeyboardForm.cs</DependentUpon>

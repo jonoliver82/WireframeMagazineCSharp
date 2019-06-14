@@ -32,6 +32,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invaders", "Invaders\Invade
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvadersPyGame", "InvadersPyGame\InvadersPyGame.csproj", "{CAB9B7EA-843B-4BC0-A8A1-77EDEC81EA1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzlefadePyGame", "FizzlefadePyGame\FizzlefadePyGame.csproj", "{FD8776CA-7441-4457-B30A-915D38BCD83B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplosionPyGame", "ExplosionPyGame\ExplosionPyGame.csproj", "{04D19E5F-918C-4724-8008-C7DB72972FC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoomFirePyGame", "DoomFirePyGame\DoomFirePyGame.csproj", "{D36971E7-D66E-45FE-A8D4-3CC9F4C1A6B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +92,18 @@ Global
 		{CAB9B7EA-843B-4BC0-A8A1-77EDEC81EA1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAB9B7EA-843B-4BC0-A8A1-77EDEC81EA1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAB9B7EA-843B-4BC0-A8A1-77EDEC81EA1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD8776CA-7441-4457-B30A-915D38BCD83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD8776CA-7441-4457-B30A-915D38BCD83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD8776CA-7441-4457-B30A-915D38BCD83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD8776CA-7441-4457-B30A-915D38BCD83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04D19E5F-918C-4724-8008-C7DB72972FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04D19E5F-918C-4724-8008-C7DB72972FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04D19E5F-918C-4724-8008-C7DB72972FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04D19E5F-918C-4724-8008-C7DB72972FC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D36971E7-D66E-45FE-A8D4-3CC9F4C1A6B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D36971E7-D66E-45FE-A8D4-3CC9F4C1A6B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D36971E7-D66E-45FE-A8D4-3CC9F4C1A6B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D36971E7-D66E-45FE-A8D4-3CC9F4C1A6B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
