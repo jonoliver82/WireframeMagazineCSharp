@@ -56,5 +56,15 @@ namespace Core.Views
                 _lastUpdateTime = _dateTimeService.Now;
             }
         }
+
+        private void DefaultPyGameForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            _game.KeyDown(e);
+        }
+
+        private void DefaultPyGameForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            _game.KeyUp(e);            
+        }
     }
 }

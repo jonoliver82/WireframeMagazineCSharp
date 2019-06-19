@@ -13,6 +13,8 @@ namespace Core
     {
         private readonly ITimerFactory _timerFactory;
 
+        private Dictionary<Keys, bool> _keyboardState;
+
         public int Width { get; set; }
 
         public int Height { get; set; }
@@ -25,7 +27,18 @@ namespace Core
             Height = height;
 
             _timerFactory = timerFactory;
+
+            _keyboardState = new Dictionary<Keys, bool>
+            {
+                { Keys.Left, false },
+                { Keys.Right, false },
+                { Keys.A, false },
+                { Keys.D, false },
+                { Keys.Space, false },
+            };
         }
+
+        protected Dictionary<Keys, bool> KeyboardState => _keyboardState;
 
         public abstract void Draw(Graphics g);
 
@@ -35,6 +48,16 @@ namespace Core
         {
             _timer = _timerFactory.Create(action, intervalMs);
             _timer.Enabled = true;
+        }
+
+        public void KeyDown(KeyEventArgs e)
+        {
+            _keyboardState[e.KeyCode] = true;
+        }
+
+        public void KeyUp(KeyEventArgs e)
+        {
+            _keyboardState[e.KeyCode] = false;
         }
     }
 }

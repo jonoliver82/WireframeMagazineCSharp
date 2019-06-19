@@ -38,6 +38,8 @@
             this.Name = "DefaultPyGameForm";
             this.Text = "DefaultPyGameForm";
             this.Load += new System.EventHandler(this.PyGameForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DefaultPyGameForm_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DefaultPyGameForm_KeyUp);
             this.ResumeLayout(false);
 
         }
