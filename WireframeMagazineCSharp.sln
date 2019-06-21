@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoomFirePyGame", "DoomFireP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpPhysicsPyGame", "JumpPhysicsPyGame\JumpPhysicsPyGame.csproj", "{86A1DB4D-4439-4A6B-B81C-319EBBC8B248}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MissilesPyGame", "MissilesPyGame\MissilesPyGame.csproj", "{6B6D38D9-B8E5-4A65-A785-BCC13760D143}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +112,10 @@ Global
 		{86A1DB4D-4439-4A6B-B81C-319EBBC8B248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86A1DB4D-4439-4A6B-B81C-319EBBC8B248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86A1DB4D-4439-4A6B-B81C-319EBBC8B248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B6D38D9-B8E5-4A65-A785-BCC13760D143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B6D38D9-B8E5-4A65-A785-BCC13760D143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B6D38D9-B8E5-4A65-A785-BCC13760D143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B6D38D9-B8E5-4A65-A785-BCC13760D143}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
