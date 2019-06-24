@@ -59,12 +59,27 @@ namespace Core.Views
 
         private void DefaultPyGameForm_KeyDown(object sender, KeyEventArgs e)
         {
-            _game.KeyDown(e);
+            (_game as KeyboardPyGame)?.KeyDown(e.KeyCode);            
         }
 
         private void DefaultPyGameForm_KeyUp(object sender, KeyEventArgs e)
         {
-            _game.KeyUp(e);            
+            (_game as KeyboardPyGame)?.KeyUp(e.KeyCode);            
+        }
+
+        private void DefaultPyGameForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            (_game as MousePyGame)?.MouseDown(e.X, e.Y);
+        }
+
+        private void DefaultPyGameForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            (_game as MousePyGame)?.MouseMove(e.X, e.Y);
+        }
+
+        private void DefaultPyGameForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            (_game as MousePyGame)?.MouseUp(e.X, e.Y);
         }
     }
 }

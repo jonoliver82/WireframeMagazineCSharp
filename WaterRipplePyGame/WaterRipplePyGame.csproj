@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0FE376FC-727F-47C0-81E4-43C418B54AA6}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{65E9D277-27D7-4FA3-9C01-C5EB96F53FFE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Core</RootNamespace>
-    <AssemblyName>Core</AssemblyName>
+    <RootNamespace>WaterRipplePyGame</RootNamespace>
+    <AssemblyName>WaterRipplePyGame</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,65 +33,64 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.2\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapters\DateTimeAdapter.cs" />
-    <Compile Include="Adapters\RandomAdapter.cs" />
-    <Compile Include="Views\DefaultPyGameForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\DefaultPyGameForm.Designer.cs">
-      <DependentUpon>DefaultPyGameForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Factories\TimerFactory.cs" />
-    <Compile Include="Interfaces\IGraphicsService.cs" />
-    <Compile Include="Interfaces\ISpriteService.cs" />
-    <Compile Include="Interfaces\ITimerFactory.cs" />
-    <Compile Include="Interop\GDI.cs" />
-    <Compile Include="PyGame.cs" />
-    <Compile Include="Services\GraphicsService.cs" />
-    <Compile Include="Services\SpriteService.cs" />
-    <Compile Include="Extensions\JObjectExtensions.cs" />
-    <Compile Include="Interfaces\IApplicationContext.cs" />
-    <Compile Include="Interfaces\IApplicationService.cs" />
-    <Compile Include="Interfaces\IDateTimeService.cs" />
-    <Compile Include="Interfaces\IGameView.cs" />
-    <Compile Include="Interfaces\IRandom.cs" />
-    <Compile Include="KeyboardPyGame.cs" />
-    <Compile Include="MousePyGame.cs" />
+    <Compile Include="Interfaces\IWaterService.cs" />
+    <Compile Include="Options\WaterRippleOptions.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\WindowsFormsApplicationService.cs" />
-    <Compile Include="Views\ManagedPyGameForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ManagedPyGameForm.Designer.cs">
-      <DependentUpon>ManagedPyGameForm.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\DefaultPyGameForm.resx">
-      <DependentUpon>DefaultPyGameForm.cs</DependentUpon>
+    <Compile Include="Services\WaterService.cs" />
+    <Compile Include="WaterRipple.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ManagedPyGameForm.resx">
-      <DependentUpon>ManagedPyGameForm.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{0fe376fc-727f-47c0-81e4-43c418b54aa6}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

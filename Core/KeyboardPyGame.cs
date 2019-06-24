@@ -1,6 +1,7 @@
 ﻿using Core.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,12 @@ using System.Windows.Forms;
 
 namespace Core
 {
-    public class KeyboardGame : IKeyboardGame
+    public abstract class KeyboardPyGame : PyGame
     {
         private Dictionary<Keys, bool> _keyboardState;
 
-        public KeyboardGame()
+        public KeyboardPyGame(int width, int height, ITimerFactory timerFactory)
+            : base (width, height, timerFactory)
         {
             _keyboardState = new Dictionary<Keys, bool>
             {
@@ -26,14 +28,14 @@ namespace Core
 
         public Dictionary<Keys, bool> KeyboardState => _keyboardState;
 
-        public void KeyDown(KeyEventArgs e)
+        public virtual void KeyDown(Keys keyCode)
         {
-            _keyboardState[e.KeyCode] = true;
+            _keyboardState[keyCode] = true;
         }
 
-        public void KeyUp(KeyEventArgs e)
+        public virtual void KeyUp(Keys keyCode)
         {
-            _keyboardState[e.KeyCode] = false;
+            _keyboardState[keyCode] = false;
         }
     }
 }

@@ -11,7 +11,7 @@ using WaterRipple.Interfaces;
 
 namespace WaterRipple
 {
-    public class WaterRippleGame : MouseGame, IWaterRippleGame
+    public class WaterRippleGame : MousePyGame, IWaterRippleGame
     {
         private readonly RenderInformation _renderInfo;
         private readonly IRandom _random;

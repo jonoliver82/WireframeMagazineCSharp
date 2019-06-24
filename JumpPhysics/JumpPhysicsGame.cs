@@ -12,7 +12,7 @@ using Core.Models;
 
 namespace JumpPhysics
 {
-    public class JumpPhysicsGame : KeyboardGame, IJumpPhysicsGame
+    public class JumpPhysicsGame : KeyboardPyGame, IJumpPhysicsGame
     {
         private RenderInformation _renderInformation;
         private Brush _maroonBrush = new SolidBrush(Color.FromArgb(128, 0, 0));

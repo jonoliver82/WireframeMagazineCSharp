@@ -40,6 +40,9 @@
             this.Load += new System.EventHandler(this.PyGameForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DefaultPyGameForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DefaultPyGameForm_KeyUp);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DefaultPyGameForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DefaultPyGameForm_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DefaultPyGameForm_MouseUp);
             this.ResumeLayout(false);
 
         }

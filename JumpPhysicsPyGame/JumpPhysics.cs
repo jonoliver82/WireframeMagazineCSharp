@@ -12,7 +12,7 @@ using JumpPhysicsPyGame.Interfaces;
 
 namespace JumpPhysicsPyGame
 {
-    public class JumpPhysics : PyGame
+    public class JumpPhysics : KeyboardPyGame
     {
         private const int WIDTH = 800;
         private const int HEIGHT = 800;

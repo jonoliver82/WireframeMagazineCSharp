@@ -8,11 +8,16 @@ using System.Drawing;
 
 namespace Core
 {
-    public abstract class MouseGame : IMouseGame
+    public abstract class MousePyGame : PyGame
     {
         private bool _isMouseDown = false;
 
         protected bool IsMouseDown => _isMouseDown;
+
+        public MousePyGame(int width, int height, ITimerFactory timerFactory)
+            : base (width, height, timerFactory)
+        {
+        }
 
         public virtual void MouseDown(int x, int y)
         {
