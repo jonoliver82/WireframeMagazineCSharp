@@ -1,14 +1,17 @@
-﻿using System;
+﻿// **********************************************************************************
+// Filename					- ModularSprites.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core;
+using Core.Interfaces;
+using ModularSpritesPyGame.Interfaces;
+using ModularSpritesPyGame.Models;
+using ModularSpritesPyGame.Options;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core;
-using Core.Interfaces;
-using ModularSpritesPyGame.Models;
-using ModularSpritesPyGame.Options;
-using ModularSpritesPyGame.Interfaces;
 
 namespace ModularSpritesPyGame
 {
@@ -21,7 +24,7 @@ namespace ModularSpritesPyGame
         private List<Tail> _tails;
         private TimeSpan _timeSpan;
 
-        public ModularSprites(ITimerFactory timerFactory, ITailFactory tailFactory, SpriteOptions options) 
+        public ModularSprites(ITimerFactory timerFactory, ITailFactory tailFactory, SpriteOptions options)
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _options = options;
@@ -55,8 +58,8 @@ namespace ModularSpritesPyGame
             _timeSpan += timeSinceLastUpdate;
 
             // Start at the bottom right
-            var x = WIDTH - _options.SegmentSize / 2;
-            var y = HEIGHT - _options.SegmentSize / 2;
+            var x = WIDTH - (_options.SegmentSize / 2);
+            var y = HEIGHT - (_options.SegmentSize / 2);
 
             // Note python's enumerate provides counter,value
             // C#'s foreach only provides the value
@@ -66,7 +69,7 @@ namespace ModularSpritesPyGame
                 item.Position = new Point(x, y);
 
                 // Calculate an angle to the next piece which wobbles sinusoidally
-                var angle = _options.Angle + _options.WobbleAmount * Math.Sin(counter * _options.PhaseStep + _timeSpan.TotalSeconds * _options.Speed);
+                var angle = _options.Angle + (_options.WobbleAmount * Math.Sin((counter * _options.PhaseStep) + (_timeSpan.TotalSeconds * _options.Speed)));
 
                 // Get the positon of the next piece using trigonometry
                 x += (int)(_options.SegmentSize * Math.Cos(angle));

@@ -1,13 +1,14 @@
-﻿using Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// **********************************************************************************
+// Filename					- DoomFire.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core;
 using Core.Interfaces;
-using System.Drawing;
-using DoomFirePyGame.Models;
 using DoomFirePyGame.Interfaces;
+using DoomFirePyGame.Models;
+using System;
+using System.Drawing;
 
 namespace DoomFirePyGame
 {
@@ -19,7 +20,7 @@ namespace DoomFirePyGame
         private Fire _fire;
         private Logo _logo;
 
-        public DoomFire(ILogoFactory logoFactory, ITimerFactory timerFactory) 
+        public DoomFire(ILogoFactory logoFactory, ITimerFactory timerFactory)
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _fire = new Fire(WIDTH, 256)
@@ -68,6 +69,7 @@ namespace DoomFirePyGame
                 for (var x = 0; x < _fire.FireWidth; x++)
                 {
                     var brush = _fire.GetPixelBrush(x, y);
+
                     // Equivalent of SetPixel
                     g.FillRectangle(brush, x, y + fireDrawOffset, 1, 1);
                 }

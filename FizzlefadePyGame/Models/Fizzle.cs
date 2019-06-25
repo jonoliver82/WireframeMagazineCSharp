@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// **********************************************************************************
+// Filename					- Fizzle.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FizzlefadePyGame.Models
 {

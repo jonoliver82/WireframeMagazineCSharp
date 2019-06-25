@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿// **********************************************************************************
+// Filename					- GDI.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using System;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Interop
 {

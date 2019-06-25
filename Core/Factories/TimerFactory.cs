@@ -1,9 +1,10 @@
-﻿using Core.Interfaces;
+﻿// **********************************************************************************
+// Filename					- TimerFactory.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Core.Factories

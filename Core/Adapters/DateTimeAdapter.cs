@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// **********************************************************************************
+// Filename					- DateTimeAdapter.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
 using Core.Interfaces;
+using System;
 
 namespace Core.Adapters
 {

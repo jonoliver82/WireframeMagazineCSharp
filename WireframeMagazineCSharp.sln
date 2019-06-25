@@ -6,6 +6,8 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6C6B8B32-A9C9-4DFA-928C-5D1B766D23AD}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		stylecop.json = stylecop.json
+		Wireframe.ruleset = Wireframe.ruleset
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{0FE376FC-727F-47C0-81E4-43C418B54AA6}"

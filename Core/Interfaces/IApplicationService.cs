@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// **********************************************************************************
+// Filename					- IApplicationService.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
 using System.Windows.Forms;
 
 namespace Core.Interfaces

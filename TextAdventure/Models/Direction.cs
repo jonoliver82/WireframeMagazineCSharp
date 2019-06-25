@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// **********************************************************************************
+// Filename					- Direction.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
 
 namespace TextAdventure.Models
 {
@@ -11,6 +10,6 @@ namespace TextAdventure.Models
         North,
         South,
         East,
-        West
+        West,
     }
 }

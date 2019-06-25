@@ -1,14 +1,17 @@
-﻿using Core;
+﻿// **********************************************************************************
+// Filename					- JumpPhysics.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core;
+using Core.Interfaces;
+using JumpPhysicsPyGame.Interfaces;
+using JumpPhysicsPyGame.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Interfaces;
 using System.Drawing;
-using JumpPhysicsPyGame.Models;
+using System.Linq;
 using System.Windows.Forms;
-using JumpPhysicsPyGame.Interfaces;
 
 namespace JumpPhysicsPyGame
 {
@@ -17,13 +20,13 @@ namespace JumpPhysicsPyGame
         private const int WIDTH = 800;
         private const int HEIGHT = 800;
 
+        private readonly IPlayerFactory _playerFactory;
+
         private Brush _maroonBrush = new SolidBrush(Color.FromArgb(128, 0, 0));
         private IEnumerable<Rectangle> _platforms;
         private Player _player;
 
-        private readonly IPlayerFactory _playerFactory;
-
-        public JumpPhysics(ITimerFactory timerFactory, IPlayerFactory playerFactory) 
+        public JumpPhysics(ITimerFactory timerFactory, IPlayerFactory playerFactory)
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _playerFactory = playerFactory;
@@ -77,7 +80,6 @@ namespace JumpPhysicsPyGame
                 _player.Position = new Point((int)newX, _player.Position.Y);
             }
 
-
             // Vertical Movement
             double newY = _player.Position.Y;
 
@@ -104,8 +106,9 @@ namespace JumpPhysicsPyGame
                 if (newPlayerPositionY.IntersectsWith(platform) && (_player.Position.Y < platform.Y))
                 {
                     playerOnGround = true || playerOnGround;
+
                     // Stick the player to the ground
-                    //_player.Position = new Point(_player.Position.X, _player.Position.Y - _player.Size.Height);
+                    ////_player.Position = new Point(_player.Position.X, _player.Position.Y - _player.Size.Height);
                 }
             }
 

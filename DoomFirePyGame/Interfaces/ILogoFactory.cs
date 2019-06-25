@@ -1,9 +1,9 @@
-﻿using DoomFirePyGame.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// **********************************************************************************
+// Filename					- ILogoFactory.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using DoomFirePyGame.Models;
 
 namespace DoomFirePyGame.Interfaces
 {

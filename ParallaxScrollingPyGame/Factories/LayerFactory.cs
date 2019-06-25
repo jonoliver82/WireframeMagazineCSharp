@@ -1,11 +1,11 @@
-﻿using ParallaxScrollingPyGame.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ParallaxScrollingPyGame.Models;
+﻿// **********************************************************************************
+// Filename					- LayerFactory.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
 using Core.Interfaces;
+using ParallaxScrollingPyGame.Interfaces;
+using ParallaxScrollingPyGame.Models;
 using System.Drawing;
 
 namespace ParallaxScrollingPyGame.Factories

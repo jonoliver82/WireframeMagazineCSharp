@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// **********************************************************************************
+// Filename					- IRandom.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
 
 namespace Core.Interfaces
 {
@@ -13,6 +12,5 @@ namespace Core.Interfaces
         int Next(int maxValue);
 
         int Next(int minValue, int maxValue);
-
     }
 }

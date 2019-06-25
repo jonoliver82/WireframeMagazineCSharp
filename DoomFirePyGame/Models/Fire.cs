@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// **********************************************************************************
+// Filename					- Fire.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoomFirePyGame.Models
 {
@@ -16,13 +17,6 @@ namespace DoomFirePyGame.Models
         /// </summary>
         private int[] _firePixels;
 
-        public int FireWidth { get; set; }
-
-        public int FireHeight { get; set; }
-
-        public int ClearSpeed { get; set; }
-        public int SpreadSpeed { get; set; }
-
         public Fire(int width, int height)
         {
             FireWidth = width;
@@ -31,6 +25,14 @@ namespace DoomFirePyGame.Models
             _firePixels = new int[width * height];
             _random = new Random();
         }
+
+        public int FireWidth { get; set; }
+
+        public int FireHeight { get; set; }
+
+        public int ClearSpeed { get; set; }
+
+        public int SpreadSpeed { get; set; }
 
         public void SetupFirePixels()
         {
@@ -43,17 +45,17 @@ namespace DoomFirePyGame.Models
             // Set bottom line to palette index 37 (#FFFFFF) white
             for (int i = 0; i < FireWidth; i++)
             {
-                _firePixels[(FireHeight - 1) * FireWidth + i] = FireColorPalette.IndexWhite;
+                _firePixels[((FireHeight - 1) * FireWidth) + i] = FireColorPalette.IndexWhite;
             }
         }
 
         public void StopFire()
         {
-            for (var y = (FireHeight - 1); y > (FireHeight - ClearSpeed); y--)
+            for (var y = FireHeight - 1; y > (FireHeight - ClearSpeed); y--)
             {
                 for (var x = 0; x < FireWidth; x++)
                 {
-                    var index = y * FireWidth + x;
+                    var index = (y * FireWidth) + x;
                     if (_firePixels[index] > 0)
                     {
                         var rand = _random.Next(SpreadSpeed);
@@ -73,9 +75,15 @@ namespace DoomFirePyGame.Models
             {
                 for (int y = 1; y < FireHeight; y++)
                 {
-                    SpreadFire(y * FireWidth + x);
+                    SpreadFire((y * FireWidth) + x);
                 }
             }
+        }
+
+        public Brush GetPixelBrush(int x, int y)
+        {
+            var index = _firePixels[(y * FireWidth) + x];
+            return FireColorPalette.Palette[index];
         }
 
         private void SpreadFire(int src)
@@ -93,15 +101,9 @@ namespace DoomFirePyGame.Models
                 {
                     dst = 0;
                 }
+
                 _firePixels[dst] = pixel - (rand & 1);
             }
         }
-
-        public Brush GetPixelBrush(int x, int y)
-        {
-            var index = _firePixels[y * FireWidth + x];
-            return FireColorPalette.Palette[index];
-        }
-    
     }
 }

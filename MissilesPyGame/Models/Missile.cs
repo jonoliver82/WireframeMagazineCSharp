@@ -1,9 +1,12 @@
-﻿using System;
+﻿// **********************************************************************************
+// Filename					- Missile.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MissilesPyGame.Models
 {
@@ -12,9 +15,10 @@ namespace MissilesPyGame.Models
         private const int GRAVITY = 5;
         private const int TRAIL_LENGTH = 1000;
         private const int TRAIL_BRIGHTNESS = 100;
-        private Color FLARE_COLOR = Color.FromArgb(255, 220, 160);
 
         private const int SPEED = 4;
+
+        private Color _flareColor = Color.FromArgb(255, 220, 160);
 
         private float _x;
         private float _y;
@@ -38,8 +42,8 @@ namespace MissilesPyGame.Models
             _maxHeight = maxHeight;
 
             _trail = new LinkedList<PointF>();
-            _flareBrush = new SolidBrush(FLARE_COLOR);
-            _flarePen = new Pen(FLARE_COLOR);
+            _flareBrush = new SolidBrush(_flareColor);
+            _flarePen = new Pen(_flareColor);
         }
 
         public void Update(TimeSpan timeSinceLastUpdate)
@@ -87,7 +91,7 @@ namespace MissilesPyGame.Models
             g.FillEllipse(_flareBrush, new RectangleF(_x - 2, _y - 2, 4, 4));
 
             // This small flickering lens flare makes it look like the missile's exhaust is very bright
-            var flareLength = (float)(4 + Math.Sin(_timeSpan.TotalSeconds) * 2 + Math.Sin(_timeSpan.TotalSeconds * 5) * 1);
+            var flareLength = (float)(4 + (Math.Sin(_timeSpan.TotalSeconds) * 2) + (Math.Sin(_timeSpan.TotalSeconds * 5) * 1));
             g.DrawLine(_flarePen,
                 new PointF(_x - flareLength, _y),
                 new PointF(_x + flareLength, _y));

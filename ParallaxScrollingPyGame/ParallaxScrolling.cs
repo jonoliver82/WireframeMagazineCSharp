@@ -1,13 +1,15 @@
-﻿using Core;
+﻿// **********************************************************************************
+// Filename					- ParallaxScrolling.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core;
+using Core.Interfaces;
+using ParallaxScrollingPyGame.Interfaces;
+using ParallaxScrollingPyGame.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Interfaces;
 using System.Drawing;
-using ParallaxScrollingPyGame.Models;
-using ParallaxScrollingPyGame.Interfaces;
 
 namespace ParallaxScrollingPyGame
 {
@@ -18,7 +20,7 @@ namespace ParallaxScrollingPyGame
 
         private List<Layer> _layers;
 
-        public ParallaxScrolling(ITimerFactory timerFactory, ILayerFactory layerFactory) 
+        public ParallaxScrolling(ITimerFactory timerFactory, ILayerFactory layerFactory)
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _layers = new List<Layer>()

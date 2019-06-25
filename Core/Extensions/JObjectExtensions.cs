@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json.Linq;
+﻿// **********************************************************************************
+// Filename					- JObjectExtensions.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Extensions
 {

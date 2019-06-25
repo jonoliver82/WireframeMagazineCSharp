@@ -1,10 +1,9 @@
-﻿using Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿// **********************************************************************************
+// Filename					- MousePyGame.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core.Interfaces;
 
 namespace Core
 {
@@ -12,12 +11,12 @@ namespace Core
     {
         private bool _isMouseDown = false;
 
-        protected bool IsMouseDown => _isMouseDown;
-
         public MousePyGame(int width, int height, ITimerFactory timerFactory)
-            : base (width, height, timerFactory)
+            : base(width, height, timerFactory)
         {
         }
+
+        protected bool IsMouseDown => _isMouseDown;
 
         public virtual void MouseDown(int x, int y)
         {
@@ -26,7 +25,7 @@ namespace Core
 
         /// <summary>
         /// Derived classes to implement their own logic, probably using the IsMouseDown property
-        /// to determine what action to take when the mouse is moved
+        /// to determine what action to take when the mouse is moved.
         /// </summary>
         public abstract void MouseMove(int x, int y);
 

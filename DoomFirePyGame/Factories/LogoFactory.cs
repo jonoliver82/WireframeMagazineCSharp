@@ -1,21 +1,21 @@
-﻿using DoomFirePyGame.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DoomFirePyGame.Models;
+﻿// **********************************************************************************
+// Filename					- LogoFactory.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
 using Core.Interfaces;
+using DoomFirePyGame.Interfaces;
+using DoomFirePyGame.Models;
 
 namespace DoomFirePyGame.Factories
 {
     public class LogoFactory : ILogoFactory
     {
-        private readonly ISpriteService _spriteService;
-
         private const int Y_FINAL = 70;
         private const int STEP = -4;
         private const string FILENAME = "doom.png";
+
+        private readonly ISpriteService _spriteService;
 
         public LogoFactory(ISpriteService spriteService)
         {

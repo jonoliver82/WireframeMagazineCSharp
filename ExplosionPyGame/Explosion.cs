@@ -1,12 +1,13 @@
-﻿using Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// **********************************************************************************
+// Filename					- Explosion.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core;
 using Core.Interfaces;
-using System.Drawing;
 using ExplosionPyGame.Interfaces;
+using System;
+using System.Drawing;
 
 namespace ExplosionPyGame
 {
@@ -18,9 +19,9 @@ namespace ExplosionPyGame
         private readonly IExplosionService _explosionService;
         private readonly IRandom _random;
 
-        public Explosion(ITimerFactory timerFactory, 
-            IExplosionService explosionService, 
-            IRandom random) 
+        public Explosion(ITimerFactory timerFactory,
+            IExplosionService explosionService,
+            IRandom random)
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _explosionService = explosionService;
@@ -43,7 +44,7 @@ namespace ExplosionPyGame
         }
 
         /// <summary>
-        /// This function creates an explosion at a random location on the screen
+        /// This function creates an explosion at a random location on the screen.
         /// </summary>
         public void ExplodeRandom()
         {
@@ -51,7 +52,7 @@ namespace ExplosionPyGame
             var x = _random.Next(WIDTH);
             var y = _random.Next(HEIGHT);
 
-            //call the explosion function for that position
+            // call the explosion function for that position
             _explosionService.Add(x, y);
         }
     }

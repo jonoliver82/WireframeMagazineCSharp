@@ -1,18 +1,19 @@
-﻿using Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿// **********************************************************************************
+// Filename					- GraphicsService.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core.Interfaces;
 using Core.Interop;
+using System;
+using System.Drawing;
 
 namespace Core.Services
 {
     public class GraphicsService : IGraphicsService
     {
         /// <summary>
-        /// Compares Colors without considering the value of the Alpha channel
+        /// Compares Colors without considering the value of the Alpha channel.
         /// </summary>
         public bool ColorRgbEquals(Color first, Color second)
         {

@@ -1,12 +1,13 @@
-﻿using Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// **********************************************************************************
+// Filename					- FizzleFade.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core;
 using Core.Interfaces;
-using System.Drawing;
 using FizzlefadePyGame.Models;
+using System;
+using System.Drawing;
 
 namespace FizzlefadePyGame
 {
@@ -19,7 +20,7 @@ namespace FizzlefadePyGame
 
         private Bitmap _backBuffer;
 
-        public FizzleFade(ITimerFactory timerFactory) 
+        public FizzleFade(ITimerFactory timerFactory)
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _fizzle = new Fizzle(WIDTH, HEIGHT);

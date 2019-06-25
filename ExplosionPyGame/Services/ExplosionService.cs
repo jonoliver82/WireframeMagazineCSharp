@@ -1,20 +1,23 @@
-﻿using Core.Interfaces;
+﻿// **********************************************************************************
+// Filename					- ExplosionService.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core.Interfaces;
 using ExplosionPyGame.Interfaces;
 using ExplosionPyGame.Models;
 using ExplosionPyGame.Options;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplosionPyGame.Services
 {
     public class ExplosionService : IExplosionService
     {
-        private List<Particle> _particles;
         private readonly IRandom _random;
         private readonly ExplosionOptions _options;
+
+        private List<Particle> _particles;
 
         public ExplosionService(IRandom random, ExplosionOptions options)
         {
@@ -27,10 +30,8 @@ namespace ExplosionPyGame.Services
         public IEnumerable<Particle> Particles => _particles;
 
         /// <summary>
-        /// This function creates a new explosion at the specified screen co-ordinates
+        /// This function creates a new explosion at the specified screen co-ordinates.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
         public void Add(int x, int y)
         {
             // these are new particles, so set their age to zero
@@ -53,7 +54,7 @@ namespace ExplosionPyGame.Services
         }
 
         /// <summary>
-        /// This function updates the array of particles
+        /// This function updates the array of particles.
         /// </summary>
         public void UpdateParticles(TimeSpan timeSinceLastUpdate)
         {

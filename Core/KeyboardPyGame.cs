@@ -1,10 +1,10 @@
-﻿using Core.Interfaces;
-using System;
+﻿// **********************************************************************************
+// Filename					- KeyboardPyGame.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core.Interfaces;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Core
@@ -14,7 +14,7 @@ namespace Core
         private Dictionary<Keys, bool> _keyboardState;
 
         public KeyboardPyGame(int width, int height, ITimerFactory timerFactory)
-            : base (width, height, timerFactory)
+            : base(width, height, timerFactory)
         {
             _keyboardState = new Dictionary<Keys, bool>
             {

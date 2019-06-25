@@ -1,13 +1,15 @@
-﻿using Core;
+﻿// **********************************************************************************
+// Filename					- Invaders.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core;
 using Core.Interfaces;
-using Core.Interop;
 using InvadersPyGame.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InvadersPyGame
 {
@@ -25,10 +27,10 @@ namespace InvadersPyGame
         private List<Shot> _shots = new List<Shot>();
         private List<Shot> _toDelete = new List<Shot>();
 
-        public Invaders(IGraphicsService graphicsService, 
-            ISpriteService spriteService, 
+        public Invaders(IGraphicsService graphicsService,
+            ISpriteService spriteService,
             ITimerFactory timerFactory,
-            IRandom random) 
+            IRandom random)
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _graphicsService = graphicsService;
@@ -56,6 +58,7 @@ namespace InvadersPyGame
             {
                 g.DrawImage(item.Sprite, item.Position);
             }
+
             _toDelete.Clear();
 
             foreach (var shot in _shots)

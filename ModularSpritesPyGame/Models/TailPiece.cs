@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// **********************************************************************************
+// Filename					- TailPiece.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModularSpritesPyGame.Models
 {

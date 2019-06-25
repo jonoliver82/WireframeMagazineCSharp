@@ -1,13 +1,14 @@
-﻿using System;
+﻿// **********************************************************************************
+// Filename					- Location.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TextAdventure.Models
 {
     /// <summary>
-    /// Data structure to store details of each location in the game
+    /// Data structure to store details of each location in the game.
     /// </summary>
     public class Location
     {
@@ -29,7 +30,7 @@ namespace TextAdventure.Models
         public Dictionary<Direction, string> LinkedLocations => _linkedLocations;
 
         /// <summary>
-        /// Add link to linkedLocations dictionary
+        /// Add link to linkedLocations dictionary.
         /// </summary>
         public void AddLink(Direction direction, string locationName)
         {

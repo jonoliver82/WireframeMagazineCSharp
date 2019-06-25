@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// **********************************************************************************
+// Filename					- Missiles.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
 using Core;
 using Core.Interfaces;
 using MissilesPyGame.Models;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace MissilesPyGame
 {
@@ -19,7 +21,7 @@ namespace MissilesPyGame
 
         private List<Missile> _missiles;
 
-        public Missiles(ITimerFactory timerFactory, IRandom random) 
+        public Missiles(ITimerFactory timerFactory, IRandom random)
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _random = random;

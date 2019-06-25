@@ -1,9 +1,11 @@
-﻿using ExplosionPyGame.Models;
+﻿// **********************************************************************************
+// Filename					- IExplosionService.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using ExplosionPyGame.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplosionPyGame.Interfaces
 {

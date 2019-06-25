@@ -1,10 +1,11 @@
-﻿using Core.Interfaces;
+﻿// **********************************************************************************
+// Filename					- PyGame.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Core
@@ -12,10 +13,6 @@ namespace Core
     public abstract class PyGame
     {
         private readonly ITimerFactory _timerFactory;
-
-        public int Width { get; set; }
-
-        public int Height { get; set; }
 
         private Timer _timer;
 
@@ -26,6 +23,10 @@ namespace Core
 
             _timerFactory = timerFactory;
         }
+
+        public int Width { get; set; }
+
+        public int Height { get; set; }
 
         public abstract void Draw(Graphics g);
 

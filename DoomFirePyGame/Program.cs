@@ -1,4 +1,9 @@
-﻿using Autofac;
+﻿// **********************************************************************************
+// Filename					- Program.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Autofac;
 using Core;
 using Core.Adapters;
 using Core.Factories;
@@ -8,20 +13,17 @@ using Core.Views;
 using DoomFirePyGame.Factories;
 using DoomFirePyGame.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DoomFirePyGame
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
