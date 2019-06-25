@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "orderingRules": {
+      "usingDirectivesPlacement": "outsideNamespace"
+    },
+    "documentationRules": {
+      "companyName": "jonoliver82",
+      "copyrightText": "**********************************************************************************\nFilename\t\t\t\t\t- {fileName}\n{copy}\n**********************************************************************************",
+      "variables": {
+        "copy": "Copyright (c) jonoliver82, 2019"
+      },
+      "xmlHeader": false,
+      "documentInterfaces": false,
+      "documentExposedElements": false,
+      "documentInternalElements": false,
+      "documentPrivateElements": false,
+      "documentPrivateFields": false
+    }
+  }
+}
