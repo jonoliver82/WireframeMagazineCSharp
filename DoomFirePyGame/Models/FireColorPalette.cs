@@ -50,10 +50,13 @@ namespace DoomFirePyGame.Models
             new SolidBrush(Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF)),
         };
 
-        public static SolidBrush[] Palette => _palette;
-
         public static int IndexWhite => 36;
 
         public static int IndexBlack => 0;
+
+        public static SolidBrush Brush(int index)
+        {
+            return _palette[index];
+        }
     }
 }

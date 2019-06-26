@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 
 namespace Core.Interop
 {
-    public class GDI
+    internal static class GDI
     {
         [DllImport("gdi32")]
-        public static extern uint GetPixel(IntPtr hDC, int XPos, int YPos);
+        public static extern uint GetPixel(IntPtr hDC, int xPos, int yPos);
     }
 }

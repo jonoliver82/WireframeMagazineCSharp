@@ -16,7 +16,7 @@ namespace Core
 
         private Timer _timer;
 
-        public PyGame(int width, int height, ITimerFactory timerFactory)
+        protected PyGame(int width, int height, ITimerFactory timerFactory)
         {
             Width = width;
             Height = height;

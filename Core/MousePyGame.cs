@@ -11,7 +11,7 @@ namespace Core
     {
         private bool _isMouseDown = false;
 
-        public MousePyGame(int width, int height, ITimerFactory timerFactory)
+        protected MousePyGame(int width, int height, ITimerFactory timerFactory)
             : base(width, height, timerFactory)
         {
         }

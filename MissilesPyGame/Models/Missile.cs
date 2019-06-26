@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace MissilesPyGame.Models
 {
-    public class Missile
+    public class Missile : IDisposable
     {
         private const int GRAVITY = 5;
         private const int TRAIL_LENGTH = 1000;
@@ -31,6 +31,8 @@ namespace MissilesPyGame.Models
         private Pen _flarePen;
 
         private LinkedList<PointF> _trail;
+
+        private bool _disposedValue = false;
 
         public Missile(float x, float vx, TimeSpan timeSpan, int maxHeight)
         {
@@ -95,6 +97,25 @@ namespace MissilesPyGame.Models
             g.DrawLine(_flarePen,
                 new PointF(_x - flareLength, _y),
                 new PointF(_x + flareLength, _y));
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposedValue)
+            {
+                if (disposing)
+                {
+                    _flarePen.Dispose();
+                    _flareBrush.Dispose();
+                }
+
+                _disposedValue = true;
+            }
         }
     }
 }

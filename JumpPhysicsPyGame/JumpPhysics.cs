@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace JumpPhysicsPyGame
 {
-    public class JumpPhysics : KeyboardPyGame
+    public class JumpPhysics : KeyboardPyGame, IDisposable
     {
         private const int WIDTH = 800;
         private const int HEIGHT = 800;
@@ -25,6 +25,8 @@ namespace JumpPhysicsPyGame
         private Brush _maroonBrush = new SolidBrush(Color.FromArgb(128, 0, 0));
         private IEnumerable<Rectangle> _platforms;
         private Player _player;
+
+        private bool _disposedValue = false;
 
         public JumpPhysics(ITimerFactory timerFactory, IPlayerFactory playerFactory)
             : base(WIDTH, HEIGHT, timerFactory)
@@ -127,6 +129,24 @@ namespace JumpPhysicsPyGame
             if (KeyboardState[Keys.Space] && playerOnGround)
             {
                 _player.YVelocity = _player.JumpVelocity;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposedValue)
+            {
+                if (disposing)
+                {
+                    _maroonBrush.Dispose();
+                }
+
+                _disposedValue = true;
             }
         }
     }

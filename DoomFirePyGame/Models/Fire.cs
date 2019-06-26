@@ -83,7 +83,7 @@ namespace DoomFirePyGame.Models
         public Brush GetPixelBrush(int x, int y)
         {
             var index = _firePixels[(y * FireWidth) + x];
-            return FireColorPalette.Palette[index];
+            return FireColorPalette.Brush(index);
         }
 
         private void SpreadFire(int src)

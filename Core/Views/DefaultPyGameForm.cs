@@ -1,12 +1,11 @@
-﻿using Core.Interfaces;
+﻿// **********************************************************************************
+// Filename					- DefaultPyGameForm.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Core.Views
@@ -28,6 +27,19 @@ namespace Core.Views
             ClientSize = new Size(game.Width, game.Height);
         }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (!DesignMode)
+            {
+                ClearScreen(e.Graphics);
+
+                _game.Update(_dateTimeService.Now - _lastUpdateTime, e.Graphics);
+                _game.Draw(e.Graphics);
+
+                _lastUpdateTime = _dateTimeService.Now;
+            }
+        }
+
         private void PyGameForm_Load(object sender, EventArgs e)
         {
             DoubleBuffered = true;
@@ -44,27 +56,14 @@ namespace Core.Views
             g.Clear(Color.Black);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            if (!this.DesignMode)
-            {
-                ClearScreen(e.Graphics);
-
-                _game.Update(_dateTimeService.Now - _lastUpdateTime, e.Graphics);
-                _game.Draw(e.Graphics);   
-                         
-                _lastUpdateTime = _dateTimeService.Now;
-            }
-        }
-
         private void DefaultPyGameForm_KeyDown(object sender, KeyEventArgs e)
         {
-            (_game as KeyboardPyGame)?.KeyDown(e.KeyCode);            
+            (_game as KeyboardPyGame)?.KeyDown(e.KeyCode);
         }
 
         private void DefaultPyGameForm_KeyUp(object sender, KeyEventArgs e)
         {
-            (_game as KeyboardPyGame)?.KeyUp(e.KeyCode);            
+            (_game as KeyboardPyGame)?.KeyUp(e.KeyCode);
         }
 
         private void DefaultPyGameForm_MouseDown(object sender, MouseEventArgs e)

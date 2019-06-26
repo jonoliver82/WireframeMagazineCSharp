@@ -11,7 +11,7 @@ namespace ModularSpritesPyGame.Models
     {
         private Image _sprite;
 
-        public Tail(Image sprite)
+        protected Tail(Image sprite)
         {
             _sprite = sprite;
         }

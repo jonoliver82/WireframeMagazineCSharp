@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using TextAdventure.Models;
 
 namespace TextAdventure
@@ -51,7 +52,7 @@ namespace TextAdventure
 
                 // Read player input
                 Console.Write('>');
-                var command = Console.ReadLine().ToLower();
+                var command = Console.ReadLine().ToLower(CultureInfo.CurrentCulture);
 
                 if (command == "q")
                 {

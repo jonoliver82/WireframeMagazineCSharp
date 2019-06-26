@@ -1,12 +1,11 @@
-﻿using Core.Interfaces;
+﻿// **********************************************************************************
+// Filename					- ManagedPyGameForm.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Core.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Core.Views
@@ -35,7 +34,7 @@ namespace Core.Views
 
         private void renderTimer_Tick(object sender, EventArgs e)
         {
-            using (var graphics = Graphics.FromHwnd(this.Handle))
+            using (var graphics = Graphics.FromHwnd(Handle))
             {
                 _game.Update(_dateTimeService.Now - _lastUpdateTime, graphics);
                 _game.Draw(graphics);

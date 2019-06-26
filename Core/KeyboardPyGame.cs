@@ -13,7 +13,7 @@ namespace Core
     {
         private Dictionary<Keys, bool> _keyboardState;
 
-        public KeyboardPyGame(int width, int height, ITimerFactory timerFactory)
+        protected KeyboardPyGame(int width, int height, ITimerFactory timerFactory)
             : base(width, height, timerFactory)
         {
             _keyboardState = new Dictionary<Keys, bool>

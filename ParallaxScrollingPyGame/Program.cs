@@ -22,6 +22,7 @@ namespace ParallaxScrollingPyGame
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "DI Composition Root")]
         [STAThread]
         public static void Main()
         {

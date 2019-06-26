@@ -11,7 +11,7 @@ using WaterRipplePyGame.Options;
 
 namespace WaterRipplePyGame.Services
 {
-    public class WaterService : IWaterService
+    public class WaterService : IWaterService, IDisposable
     {
         private readonly WaterRippleOptions _options;
 
@@ -22,6 +22,8 @@ namespace WaterRipplePyGame.Services
 
         private int[] _frontBuffer;
         private int[] _backBuffer;
+
+        private bool _disposedValue = false;
 
         public WaterService(WaterRippleOptions options)
         {
@@ -40,22 +42,26 @@ namespace WaterRipplePyGame.Services
 
         public void AddSplash(int x, int y)
         {
-            // Initial point.
-            _buffer1[(y * _options.Width) + x] = _options.InitialForce;
+            // CA2233 potential overflow of y - check bounds before usage
+            if (x >= 0 && x < _options.Width && y >= 0 && y < _options.Height)
+            {
+                // Initial point.
+                _buffer1[(y * _options.Width) + x] = _options.InitialForce;
 
-            // Left/Right of point
-            _buffer1[(y * _options.Width) + x + 1] = _options.InitialForce;
-            _buffer1[(y * _options.Width) + x - 1] = _options.InitialForce;
+                // Left/Right of point
+                _buffer1[(y * _options.Width) + x + 1] = _options.InitialForce;
+                _buffer1[(y * _options.Width) + x - 1] = _options.InitialForce;
 
-            // Up/Down of point
-            _buffer1[((y - 1) * _options.Width) + x] = _options.InitialForce;
-            _buffer1[((y + 1) * _options.Width) + x] = _options.InitialForce;
+                // Up/Down of point
+                _buffer1[((y - 1) * _options.Width) + x] = _options.InitialForce;
+                _buffer1[((y + 1) * _options.Width) + x] = _options.InitialForce;
 
-            _buffer1[((y - 1) * _options.Width) + x - 1] = _options.InitialForce;
-            _buffer1[((y - 1) * _options.Width) + x + 1] = _options.InitialForce;
+                _buffer1[((y - 1) * _options.Width) + x - 1] = _options.InitialForce;
+                _buffer1[((y - 1) * _options.Width) + x + 1] = _options.InitialForce;
 
-            _buffer1[((y + 1) * _options.Width) + x - 1] = _options.InitialForce;
-            _buffer1[((y + 1) * _options.Width) + x + 1] = _options.InitialForce;
+                _buffer1[((y + 1) * _options.Width) + x - 1] = _options.InitialForce;
+                _buffer1[((y + 1) * _options.Width) + x + 1] = _options.InitialForce;
+            }
         }
 
         public void Initialise(int width, int height)
@@ -68,6 +74,24 @@ namespace WaterRipplePyGame.Services
             ProcessBuffers(_backBuffer, _frontBuffer);
             SwapBuffers();
             Render();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposedValue)
+            {
+                if (disposing)
+                {
+                    _renderOutput.Dispose();
+                }
+
+                _disposedValue = true;
+            }
         }
 
         private void ProcessBuffers(int[] source, int[] dest)
