@@ -1,4 +1,4 @@
-This repository contains C# Windows Forms conversions of the Python samples from Wireframe Magazine:
+This repository contains C# Windows Forms conversions of the Python samples from [Wireframe Magazine](https://github.com/Wireframe-Magazine):
 
 Issue 1 - [Explosion](https://github.com/Wireframe-Magazine/Wireframe-1)
 
@@ -13,6 +13,8 @@ Issue 7 - [Jump Physics](https://github.com/Wireframe-Magazine/Wireframe-7)
 Issue 8 - [Missiles](https://github.com/Wireframe-Magazine/Wireframe-8)
 
 Issue 9 - [Invaders](https://github.com/Wireframe-Magazine/Wireframe-9)
+
+Issue 10 - [Spawn](https://github.com/Wireframe-Magazine/Wireframe-10)
 
 Additional projects using the same Core classes:
 
