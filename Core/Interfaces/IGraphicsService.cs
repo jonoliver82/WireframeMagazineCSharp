@@ -12,5 +12,7 @@ namespace Core.Interfaces
         bool ColorRgbEquals(Color first, Color second);
 
         Color GetScreenColorAtPosition(Graphics g, Point position);
+
+        Color HsvToRgbColor(double hue, double saturation, double value);
     }
 }

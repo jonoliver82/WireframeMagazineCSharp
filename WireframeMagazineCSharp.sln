@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterRipplePyGame", "WaterR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpawnPyGame", "SpawnPyGame\SpawnPyGame.csproj", "{17AEDC4E-B0CE-4199-9290-33FAC271781A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreakoutPyGame", "BreakoutPyGame\BreakoutPyGame.csproj", "{520FE0D0-F408-49D7-8312-9D535414BC50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +90,10 @@ Global
 		{17AEDC4E-B0CE-4199-9290-33FAC271781A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17AEDC4E-B0CE-4199-9290-33FAC271781A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17AEDC4E-B0CE-4199-9290-33FAC271781A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{520FE0D0-F408-49D7-8312-9D535414BC50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{520FE0D0-F408-49D7-8312-9D535414BC50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{520FE0D0-F408-49D7-8312-9D535414BC50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{520FE0D0-F408-49D7-8312-9D535414BC50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

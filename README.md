@@ -16,6 +16,8 @@ Issue 9 - [Invaders](https://github.com/Wireframe-Magazine/Wireframe-9)
 
 Issue 10 - [Spawn](https://github.com/Wireframe-Magazine/Wireframe-10)
 
+Issue 11 - [Breakout](https://github.com/Wireframe-Magazine/Wireframe-11)
+
 Additional projects using the same Core classes:
 
 Water Ripple - [2D Water](https://web.archive.org/web/20160418004149/http://freespace.virgin.net/hugo.elias/graphics/x_water.htm)
