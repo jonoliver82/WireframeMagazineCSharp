@@ -66,7 +66,7 @@ namespace BreakoutPyGame
             // This makes it more likely that collisions will be handled correctly
             for (int i = 0; i < 3; i++)
             {
-                UpdateStep(1.0 / 400.0);
+                UpdateStep(i * 0.005);
             }
         }
 
@@ -108,8 +108,8 @@ namespace BreakoutPyGame
 
             // Now reset the ball
             _ball.Center = new Point(WIDTH / 2, HEIGHT / 2);
-            _ball.VelocityX = _random.Next(-200, 200);
-            _ball.VelocityY = 400;
+            _ball.VelocityX = _random.Next(10) < 5 ? 100 : -100;
+            _ball.VelocityY = 100;
         }
 
         private void UpdateStep(double difference)
@@ -153,7 +153,7 @@ namespace BreakoutPyGame
                 vy = -Math.Abs(vy);
 
                 // Randomise the x velocity but keep the sign
-                vx = MathExtensions.CopySign(_random.Next(50, 300), vx);
+                vx = MathExtensions.CopySign(_random.Next(50, 100), vx);
             }
             else
             {
