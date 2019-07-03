@@ -25,7 +25,6 @@ namespace BreakoutPyGame
         private const int BRICK_WIDTH = (WIDTH - (2 * MARGIN)) / BRICKS_X;
         private const int BRICK_HEIGHT = 25;
 
-        private readonly IGraphicsService _graphicsService;
         private readonly IRandom _random;
 
         private List<Brick> _bricks;
@@ -33,10 +32,9 @@ namespace BreakoutPyGame
 
         private Bat _bat;
 
-        public Breakout(IGraphicsService graphicsService, IRandom random, ITimerFactory timerFactory)
+        public Breakout(IRandom random, ITimerFactory timerFactory)
             : base(WIDTH, HEIGHT, timerFactory)
         {
-            _graphicsService = graphicsService;
             _random = random;
 
             _bricks = new List<Brick>();
@@ -93,15 +91,21 @@ namespace BreakoutPyGame
             // First, let's do bricks
             _bricks.Clear();
 
+            var baseColor = Color.Pink;
+
             for (int x = 0; x < BRICKS_X; x++)
             {
                 for (int y = 0; y < BRICKS_Y; y++)
                 {
                     var brick = new Brick((x * BRICK_WIDTH) + MARGIN, (y * BRICK_HEIGHT) + MARGIN, BRICK_WIDTH - 1, BRICK_HEIGHT - 1);
-                    var hue = (x + y) / BRICKS_X;
-                    var saturation = ((y / BRICKS_Y) * 0.5) + 0.5;
-                    brick.SetHighlight(_graphicsService.HsvToRgbColor(hue, saturation * 0.7, 1.0));
-                    brick.SetColor(_graphicsService.HsvToRgbColor(hue, saturation, 0.8));
+
+                    var yDiff = brick.TopLeft.Y;
+                    var highlight = Color.FromArgb(baseColor.R - yDiff, baseColor.G - yDiff, baseColor.B - yDiff);
+                    brick.SetHighlight(highlight);
+
+                    var color = Color.FromArgb(highlight.R - x, highlight.G - x, highlight.B - x);
+                    brick.SetColor(color);
+
                     _bricks.Add(brick);
                 }
             }
@@ -150,10 +154,9 @@ namespace BreakoutPyGame
 
             if (_ball.Rect.IntersectsWith(_bat.Rect))
             {
+                // Inverse the velocity of the ball
                 vy = -Math.Abs(vy);
-
-                // Randomise the x velocity but keep the sign
-                vx = MathExtensions.CopySign(_random.Next(50, 100), vx);
+                vx = -Math.Abs(vx) + _random.Next(-20, 20);
             }
             else
             {
