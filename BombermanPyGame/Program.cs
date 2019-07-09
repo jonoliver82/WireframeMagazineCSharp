@@ -4,6 +4,8 @@
 // **********************************************************************************
 
 using Autofac;
+using BombermanPyGame.Factories;
+using BombermanPyGame.Interfaces;
 using Core;
 using Core.Adapters;
 using Core.Factories;
@@ -38,6 +40,7 @@ namespace BombermanPyGame
             builder.RegisterType<TimerFactory>().As<ITimerFactory>();
             builder.RegisterType<WindowsFormsApplicationService>().As<IApplicationService>();
 
+            builder.RegisterType<TileFactory>().As<ITileFactory>();
             builder.RegisterType<Bomberman>().As<PyGame>();
             builder.RegisterType<DefaultPyGameForm>().As<Form>();
 
