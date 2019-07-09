@@ -22,7 +22,7 @@ namespace Core.Services
 
         /// <summary>
         /// Returns an RGB color from HSV
-        /// https://stackoverflow.com/questions/359612/how-to-change-rgb-color-to-hsv/1626175#1626175
+        /// https://stackoverflow.com/questions/359612/how-to-change-rgb-color-to-hsv/1626175#1626175  .
         /// </summary>
         public Color HsvToRgbColor(double hue, double saturation, double value)
         {
