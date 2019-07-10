@@ -11,14 +11,6 @@ namespace BombermanPyGame.Factories
 {
     public class TileFactory : ITileFactory
     {
-        // Constants for tile types
-        // TODO: consider enum or class for each
-        private const int GROUND = 0;
-        private const int WALL = 1;
-        private const int BRICK = 2;
-        private const int BOMB = 3;
-        private const int EXPLOSION = 4;
-
         private readonly ISpriteService _spriteService;
 
         public TileFactory(ISpriteService spriteService)
@@ -28,12 +20,27 @@ namespace BombermanPyGame.Factories
 
         public Tile CreateGround()
         {
-            return new Tile(GROUND, _spriteService.LoadImage("ground.png"));
+            return new Tile(TileType.Ground, _spriteService.LoadImage("ground.png"));
         }
 
         public Tile CreateWall()
         {
-            return new Tile(WALL, _spriteService.LoadImage("wall.png"));
+            return new Tile(TileType.Wall, _spriteService.LoadImage("wall.png"));
+        }
+
+        public Tile CreateBrick()
+        {
+            return new Tile(TileType.Brick, _spriteService.LoadImage("brick.png"));
+        }
+
+        public Tile CreateBomb()
+        {
+            return new Tile(TileType.Bomb, _spriteService.LoadImage("bomb.png"));
+        }
+
+        public Tile CreateExplosion()
+        {
+            return new Tile(TileType.Explosion, _spriteService.LoadImage("bomb.png"));
         }
     }
 }

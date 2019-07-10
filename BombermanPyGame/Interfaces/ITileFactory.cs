@@ -12,5 +12,11 @@ namespace BombermanPyGame.Interfaces
         Tile CreateGround();
 
         Tile CreateWall();
+
+        Tile CreateBrick();
+
+        Tile CreateBomb();
+
+        Tile CreateExplosion();
     }
 }

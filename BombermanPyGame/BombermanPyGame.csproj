@@ -57,6 +57,8 @@
     <Compile Include="Interfaces\ITileFactory.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Tile.cs" />
+    <Compile Include="Models\TileMap.cs" />
+    <Compile Include="Models\TileType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -15,18 +15,18 @@ namespace BombermanPyGame
 {
     public class Bomberman : KeyboardPyGame
     {
-        // TODO 10?
-        private const int SIZE = 9;
+        private const int MAP_SIZE = 9;
+        private const int TILE_SIZE = 45;
 
-        private const int WIDTH = (SIZE * 45) - 5;
-        private const int HEIGHT = (SIZE * 45) - 5;
+        private const int WIDTH = (MAP_SIZE * TILE_SIZE) - 5;
+        private const int HEIGHT = (MAP_SIZE * TILE_SIZE) - 5;
 
         private const int BOMB_RANGE = 3;
 
         private readonly ITileFactory _tileFactory;
 
         private Player _player;
-        private Tile[,] _tilemap;
+        private TileMap _tileMap;
 
         public Bomberman(ITimerFactory timerFactory,
             ISpriteService spriteService,
@@ -42,25 +42,6 @@ namespace BombermanPyGame
             PopulateTileMap();
         }
 
-        private void PopulateTileMap()
-        {
-            _tilemap = new Tile[10, 10];
-            for (int x = 0; x < 10; x++)
-            {
-                for (int y = 0; y < 10; y++)
-                {
-                    if (x % 2 == 1 && y % 2 == 1)
-                    {
-                        _tilemap[x, y] = _tileFactory.CreateWall();
-                    }
-                    else
-                    {
-                        _tilemap[x, y] = _tileFactory.CreateGround();
-                    }
-                }
-            }
-        }
-
         public override void KeyDown(Keys keyCode)
         {
             // TODO
@@ -69,12 +50,30 @@ namespace BombermanPyGame
 
         public override void Draw(Graphics g)
         {
-            // TODO
+            // Draw the tilemap
+            for (int x = 0; x < MAP_SIZE; x++)
+            {
+                for (int y = 0; y < MAP_SIZE; y++)
+                {
+                    g.DrawImage(_tileMap.GetImage(x, y), x * TILE_SIZE, y * TILE_SIZE);
+                }
+            }
+
+            // Draw the player
+            g.DrawImage(_player.Sprite, _player.X * TILE_SIZE, _player.Y * TILE_SIZE);
         }
 
         public override void Update(TimeSpan timeSinceLastUpdate, Graphics g)
         {
             // TODO
+        }
+
+        private void PopulateTileMap()
+        {
+            _tileMap = new TileMap(MAP_SIZE, MAP_SIZE);
+            _tileMap.Initialise(MAP_SIZE, MAP_SIZE, _tileFactory);
+            _tileMap.SetBrick(3, 2);
+            _tileMap.SetBrick(4, 7);
         }
     }
 }
