@@ -14,8 +14,6 @@ namespace BombermanPyGame.Models
 {
     public class Tile
     {
-        ////private int _timer = 0;
-
         public Tile(TileType tileType, Image sprite)
         {
             TileType = tileType;
@@ -26,6 +24,6 @@ namespace BombermanPyGame.Models
 
         public Image Sprite { get; set; }
 
-        public int Timer { get; }
+        public int BombTimer { get; set; }
     }
 }

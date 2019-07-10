@@ -20,7 +20,11 @@ namespace Core
             {
                 { Keys.Left, false },
                 { Keys.Right, false },
+                { Keys.Up, false },
+                { Keys.Down, false },
+                { Keys.W, false },
                 { Keys.A, false },
+                { Keys.S, false },
                 { Keys.D, false },
                 { Keys.Space, false },
             };

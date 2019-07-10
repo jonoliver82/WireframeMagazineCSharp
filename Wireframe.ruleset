@@ -109,7 +109,6 @@
     <Rule Id="CA1811" Action="Error" />
     <Rule Id="CA1812" Action="Error" />
     <Rule Id="CA1813" Action="Warning" />
-    <Rule Id="CA1814" Action="Warning" />
     <Rule Id="CA1815" Action="Warning" />
     <Rule Id="CA1819" Action="Warning" />
     <Rule Id="CA1820" Action="Warning" />

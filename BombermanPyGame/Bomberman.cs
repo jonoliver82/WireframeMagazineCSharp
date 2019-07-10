@@ -44,8 +44,43 @@ namespace BombermanPyGame
 
         public override void KeyDown(Keys keyCode)
         {
-            // TODO
+            // Call base class first to set KeyboardState
             base.KeyDown(keyCode);
+
+            // Store new temporary player position
+            var newX = _player.X;
+            var newY = _player.Y;
+
+            // Update new position using keyboard
+            if ((KeyboardState[Keys.Left] || KeyboardState[Keys.A]) && _player.X > 0)
+            {
+                newX -= 1;
+            }
+            else if ((KeyboardState[Keys.Right] || KeyboardState[Keys.D]) && _player.X < MAP_SIZE - 1)
+            {
+                newX += 1;
+            }
+            else if ((KeyboardState[Keys.Up] || KeyboardState[Keys.W]) && _player.Y > 0)
+            {
+                newY -= 1;
+            }
+            else if ((KeyboardState[Keys.Down] || KeyboardState[Keys.S]) && _player.Y < MAP_SIZE -1)
+            {
+                newY += 1;
+            }
+
+            // Move player to new position if allowed
+            if (_tileMap.CanMoveToPosition(newX, newY))
+            {
+                _player.X = newX;
+                _player.Y = newY;
+            }
+
+            // Space key to place bomb
+            if (KeyboardState[Keys.Space])
+            {
+                _tileMap.SetBomb(_player.X, _player.Y);
+            }
         }
 
         public override void Draw(Graphics g)

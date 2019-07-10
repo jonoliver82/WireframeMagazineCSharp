@@ -6,6 +6,7 @@
 using System;
 using System.Drawing;
 using BombermanPyGame.Interfaces;
+using System.Linq;
 
 namespace BombermanPyGame.Models
 {
@@ -47,6 +48,23 @@ namespace BombermanPyGame.Models
         public Image GetImage(int x, int y)
         {
             return _tileMap[x, y].Sprite;
+        }
+
+        public bool CanMoveToPosition(int newX, int newY)
+        {
+            var movableTileTypes = new TileType[]
+            {
+                TileType.Ground,
+                TileType.Explosion,
+            };
+
+            return movableTileTypes.Contains(_tileMap[newX, newY].TileType);
+        }
+
+        public void SetBomb(int x, int y)
+        {
+            _tileMap[x, y] = _tileFactory.CreateBomb();
+            _tileMap[x, y].BombTimer = 150;
         }
     }
 }
