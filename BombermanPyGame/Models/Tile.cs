@@ -15,15 +15,21 @@ namespace BombermanPyGame.Models
     public class Tile
     {
         public Tile(TileType tileType, Image sprite)
+            : this(tileType, sprite, 0)
+        {
+        }
+
+        public Tile(TileType tileType, Image sprite, int timer)
         {
             TileType = tileType;
             Sprite = sprite;
+            Timer = timer;
         }
 
         public TileType TileType { get; set; }
 
         public Image Sprite { get; set; }
 
-        public int BombTimer { get; set; }
+        public int Timer { get; set; }
     }
 }

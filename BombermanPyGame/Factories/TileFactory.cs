@@ -11,6 +11,9 @@ namespace BombermanPyGame.Factories
 {
     public class TileFactory : ITileFactory
     {
+        private const int EXPLOSION_TIME = 50;
+        private const int BOMB_TIME = 150;
+
         private readonly ISpriteService _spriteService;
 
         public TileFactory(ISpriteService spriteService)
@@ -35,12 +38,12 @@ namespace BombermanPyGame.Factories
 
         public Tile CreateBomb()
         {
-            return new Tile(TileType.Bomb, _spriteService.LoadImage("bomb.png"));
+            return new Tile(TileType.Bomb, _spriteService.LoadImage("bomb.png"), BOMB_TIME);
         }
 
         public Tile CreateExplosion()
         {
-            return new Tile(TileType.Explosion, _spriteService.LoadImage("bomb.png"));
+            return new Tile(TileType.Explosion, _spriteService.LoadImage("explosion.png"), EXPLOSION_TIME);
         }
     }
 }

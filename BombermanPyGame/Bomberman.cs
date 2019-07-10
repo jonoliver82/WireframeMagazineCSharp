@@ -6,6 +6,7 @@
 using BombermanPyGame.Interfaces;
 using BombermanPyGame.Models;
 using Core;
+using Core.Extensions;
 using Core.Interfaces;
 using System;
 using System.Drawing;
@@ -29,16 +30,12 @@ namespace BombermanPyGame
         private TileMap _tileMap;
 
         public Bomberman(ITimerFactory timerFactory,
-            ISpriteService spriteService,
+            IPlayerFactory playerFactory,
             ITileFactory tileFactory)
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _tileFactory = tileFactory;
-
-            // TODO: consider Player factory
-            var playerSprite = spriteService.LoadImage("player.png");
-            _player = new Player(playerSprite, 0, 0);
-
+            _player = playerFactory.Create(0, 0);
             PopulateTileMap();
         }
 
@@ -64,7 +61,7 @@ namespace BombermanPyGame
             {
                 newY -= 1;
             }
-            else if ((KeyboardState[Keys.Down] || KeyboardState[Keys.S]) && _player.Y < MAP_SIZE -1)
+            else if ((KeyboardState[Keys.Down] || KeyboardState[Keys.S]) && _player.Y < MAP_SIZE - 1)
             {
                 newY += 1;
             }
@@ -100,7 +97,65 @@ namespace BombermanPyGame
 
         public override void Update(TimeSpan timeSinceLastUpdate, Graphics g)
         {
-            // TODO
+            // Iterate through each tile in the tilemap
+            for (int x = 0; x < MAP_SIZE; x++)
+            {
+                for (int y = 0; y < MAP_SIZE; y++)
+                {
+                    _tileMap.DecrementTimer(x, y);
+
+                    // Process tile types on timer finish
+                    if (_tileMap.TimerExpired(x, y))
+                    {
+                        ProcessTimerExpired(x, y);
+                    }
+                }
+            }
+        }
+
+        private void ProcessTimerExpired(int x, int y)
+        {
+            // Explosions eventually become ground
+            if (_tileMap.IsExplosion(x, y))
+            {
+                _tileMap.SetGround(x, y);
+            }
+
+            // Bombs eventually create explosions
+            if (_tileMap.IsBomb(x, y))
+            {
+                GenerateExplosionsFromOrigin(x, y);
+
+                // Remove bomb
+                _tileMap.SetExplosion(x, y);
+            }
+        }
+
+        private void GenerateExplosionsFromOrigin(int x, int y)
+        {
+            // bombs radiate out in all 4 directions
+            for (int angleDegrees = 0; angleDegrees < 360; angleDegrees += 90)
+            {
+                var cosA = (int)Math.Cos(MathExtensions.Radians(angleDegrees));
+                var sinA = (int)Math.Sin(MathExtensions.Radians(angleDegrees));
+
+                // RANGE determines bomb reach
+                for (int range = 1; range < BOMB_RANGE; range++)
+                {
+                    var xOffset = range * cosA;
+                    var yOffset = range * sinA;
+
+                    // Only create explosions within the tilemap boundrary, and only on ground and brick tiles
+                    if (_tileMap.CanCreateExplosion(x + xOffset, y + yOffset))
+                    {
+                        _tileMap.SetExplosion(x + xOffset, y + yOffset);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
         }
 
         private void PopulateTileMap()

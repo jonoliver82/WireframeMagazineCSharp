@@ -33,5 +33,10 @@ namespace Core.Extensions
 
             return x;
         }
+
+        public static double Radians(double degrees)
+        {
+            return degrees * (Math.PI / 180.0);
+        }
     }
 }
