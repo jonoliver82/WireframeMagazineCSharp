@@ -22,6 +22,11 @@ namespace Core.Adapters
             return _random.Next(maxValue);
         }
 
+        public double Next(double minValue, double maxValue)
+        {
+            return (NextDouble() * (maxValue - minValue)) + minValue;
+        }
+
         public int Next(int minValue, int maxValue)
         {
             return _random.Next(minValue, maxValue);

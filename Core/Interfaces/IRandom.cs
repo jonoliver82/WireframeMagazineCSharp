@@ -12,5 +12,7 @@ namespace Core.Interfaces
         int Next(int maxValue);
 
         int Next(int minValue, int maxValue);
+
+        double Next(double minValue, double maxValue);
     }
 }
