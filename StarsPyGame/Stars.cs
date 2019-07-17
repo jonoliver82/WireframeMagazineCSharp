@@ -30,8 +30,6 @@ namespace StarsPyGame
         private const double MIN_WARP_FACTOR = 0.1;
         private const int TRAIL_LENGTH = 2;
 
-        private readonly IRandom _random;
-
         private static SolidBrush _warpBrush = new SolidBrush(Color.FromArgb(180, 160, 0));
         private static SolidBrush _instructionBrush = new SolidBrush(Color.FromArgb(90, 80, 0));
 
@@ -44,9 +42,10 @@ namespace StarsPyGame
             Alignment = StringAlignment.Center,
         };
 
+        private readonly IRandom _random;
+
         private List<Star> _starList;
 
-        // TODO stars need access to this for the end position calculation
         private double _warpFactor = 0.0;
 
         public Stars(ITimerFactory timerFactory, IRandom random)
@@ -79,7 +78,7 @@ namespace StarsPyGame
             // Calculate the new warp factor
             if (KeyboardState[Keys.Space])
             {
-                _warpFactor += ACCEL * timeSinceLastUpdate.TotalSeconds;
+                _warpFactor += ACCEL * timeSinceLastUpdate.TotalSeconds * 10;
             }
 
             // Apply drag to slow us, regardless of whether space is held
@@ -107,14 +106,25 @@ namespace StarsPyGame
             foreach (var star in _starList)
             {
                 // Move according to speed and warp factor
+                star.CurrentPosition = new Point((int)(star.CurrentPosition.X + (star.VelocityX * _warpFactor * timeSinceLastUpdate.TotalSeconds)),
+                    (int)(star.CurrentPosition.Y + (star.VelocityY * _warpFactor * timeSinceLastUpdate.TotalSeconds)));
 
                 // Grow brighter
+                star.Brightness = (int)Math.Min(star.Brightness + (_warpFactor * 200 * timeSinceLastUpdate.TotalSeconds), star.Speed);
 
                 // Get faster
+                star.VelocityX = star.VelocityX * Math.Pow(2, timeSinceLastUpdate.TotalSeconds);
+                star.VelocityY = star.VelocityY * Math.Pow(2, timeSinceLastUpdate.TotalSeconds);
             }
 
             // Drop any stars that are completely off-screen
+            _starList.RemoveAll(x => IsOutsideScreenBounds(x.CalculateEndPosition(_warpFactor)));
+        }
 
+        // TODO move to Core
+        private bool IsOutsideScreenBounds(Point endPosition)
+        {
+            return endPosition.X < 0 || endPosition.X > WIDTH || endPosition.Y < 0 || endPosition.Y > HEIGHT;
         }
 
         private void DrawStars(Graphics g)
@@ -122,7 +132,7 @@ namespace StarsPyGame
             foreach (var star in _starList)
             {
                 var pen = new Pen(Color.FromArgb(star.Brightness, star.Brightness, star.Brightness));
-                g.DrawLine(pen, star.EndPosition, star.CurrentPosition);
+                g.DrawLine(pen, star.CalculateEndPosition(_warpFactor), star.CurrentPosition);
             }
         }
 

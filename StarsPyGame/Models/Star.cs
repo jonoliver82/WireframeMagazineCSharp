@@ -10,19 +10,14 @@ namespace StarsPyGame.Models
 {
     public class Star
     {
-        private const int DEFAULT_BRIGHTNESS = 10;
+        private const int DEFAULT_BRIGHTNESS = 100;
         private const int TRAIL_LENGTH = 2;
-        private const double MIN_WARP_FACTOR = 0.1;
 
         private Point _currentPosition;
         private double _velocityX;
         private double _velocityY;
         private int _brightness;
         private double _speed;
-
-        // TODO remove warp factor from star and maintain in stars
-        // when it is set use visitor pattern to update value in all stars?
-        private double _warpFactor;
 
         public Star(Point position, double velocityX, double velocityY)
         {
@@ -35,20 +30,67 @@ namespace StarsPyGame.Models
             _speed = Math.Sqrt((_velocityX * _velocityX) + (_velocityY * _velocityY));
 
             _brightness = DEFAULT_BRIGHTNESS;
-            _warpFactor = MIN_WARP_FACTOR;
         }
 
-        public int Brightness => _brightness;
-
-        public Point CurrentPosition => _currentPosition;
-
-        public Point EndPosition
+        public int Brightness
         {
             get
             {
-                return new Point((int)(_currentPosition.X - (_velocityX * _warpFactor * TRAIL_LENGTH / 60)),
-                                 (int)(_currentPosition.Y - (_velocityY * _warpFactor * TRAIL_LENGTH / 60)));
+                return _brightness;
             }
+
+            set
+            {
+                _brightness = value;
+            }
+        }
+
+        public double Speed => _speed;
+
+        // TODO create a velocity type in core with x and y
+        public double VelocityX
+        {
+            get
+            {
+                return _velocityX;
+            }
+
+            set
+            {
+                _velocityX = value;
+            }
+        }
+
+        public double VelocityY
+        {
+            get
+            {
+                return _velocityY;
+            }
+
+            set
+            {
+                _velocityY = value;
+            }
+        }
+
+        public Point CurrentPosition
+        {
+            get
+            {
+                return _currentPosition;
+            }
+
+            set
+            {
+                _currentPosition = value;
+            }
+        }
+
+        public Point CalculateEndPosition(double warpFactor)
+        {
+            return new Point((int)(_currentPosition.X - (_velocityX * warpFactor * TRAIL_LENGTH / 60)),
+                             (int)(_currentPosition.Y - (_velocityY * warpFactor * TRAIL_LENGTH / 60)));
         }
     }
 }
