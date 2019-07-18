@@ -37,5 +37,10 @@ namespace Core
             _timer = _timerFactory.Create(action, intervalMs);
             _timer.Enabled = true;
         }
+
+        protected bool IsOutsideScreenBounds(Point endPosition)
+        {
+            return endPosition.X < 0 || endPosition.X > Width || endPosition.Y < 0 || endPosition.Y > Height;
+        }
     }
 }

@@ -3,6 +3,7 @@
 // Copyright (c) jonoliver82, 2019
 // **********************************************************************************
 
+using Core.Models;
 using System;
 using System.Drawing;
 
@@ -13,84 +14,50 @@ namespace StarsPyGame.Models
         private const int DEFAULT_BRIGHTNESS = 100;
         private const int TRAIL_LENGTH = 2;
 
-        private Point _currentPosition;
-        private double _velocityX;
-        private double _velocityY;
+        private Point _startPosition;
+        private Point _endPosition;
+        private Velocity _velocity;
         private int _brightness;
-        private double _speed;
 
-        public Star(Point position, double velocityX, double velocityY)
+        public Star(Point position, Velocity velocity)
         {
-            _currentPosition = position;
-            _velocityX = velocityX;
-            _velocityY = velocityY;
-
-            // Math.Hypot(*vel)
-            // Return the Euclidean norm, sqrt(x*x + y*y). This is the length of the vector from the origin to point (x, y)
-            _speed = Math.Sqrt((_velocityX * _velocityX) + (_velocityY * _velocityY));
-
+            _startPosition = position;
+            _velocity = velocity;
             _brightness = DEFAULT_BRIGHTNESS;
         }
 
-        public int Brightness
-        {
-            get
-            {
-                return _brightness;
-            }
+        public int Brightness => _brightness;
 
-            set
-            {
-                _brightness = value;
-            }
+        public double Speed => _velocity.Speed();
+
+        public Velocity Velocity => _velocity;
+
+        public Point StartPosition => _startPosition;
+
+        public Point EndPosition => _endPosition;
+
+        public Color LineColor => Color.FromArgb(_brightness, _brightness, _brightness);
+
+        public void UpdateVelocity(TimeSpan interval)
+        {
+            _velocity.UpdateVelocity(interval);
         }
 
-        public double Speed => _speed;
-
-        // TODO create a velocity type in core with x and y
-        public double VelocityX
+        public void UpdateStartAndEndPositions(double warpFactor, TimeSpan interval)
         {
-            get
-            {
-                return _velocityX;
-            }
+            _startPosition = new Point((int)(_startPosition.X + (_velocity.X * warpFactor * interval.TotalSeconds)),
+                                       (int)(_startPosition.Y + (_velocity.Y * warpFactor * interval.TotalSeconds)));
 
-            set
-            {
-                _velocityX = value;
-            }
+            _endPosition = new Point((int)(_startPosition.X - (_velocity.X * warpFactor * TRAIL_LENGTH / 60)),
+                                     (int)(_startPosition.Y - (_velocity.Y * warpFactor * TRAIL_LENGTH / 60)));
         }
 
-        public double VelocityY
+        public void UpdateBrightness(double warpFactor, TimeSpan interval)
         {
-            get
-            {
-                return _velocityY;
-            }
+            _brightness = (int)Math.Min(_brightness + (warpFactor * 200 * interval.TotalSeconds), Speed);
 
-            set
-            {
-                _velocityY = value;
-            }
-        }
-
-        public Point CurrentPosition
-        {
-            get
-            {
-                return _currentPosition;
-            }
-
-            set
-            {
-                _currentPosition = value;
-            }
-        }
-
-        public Point CalculateEndPosition(double warpFactor)
-        {
-            return new Point((int)(_currentPosition.X - (_velocityX * warpFactor * TRAIL_LENGTH / 60)),
-                             (int)(_currentPosition.Y - (_velocityY * warpFactor * TRAIL_LENGTH / 60)));
+            // Clamp to 255 so can be used as a color component (RGB)
+            _brightness = Math.Min(255, _brightness);
         }
     }
 }

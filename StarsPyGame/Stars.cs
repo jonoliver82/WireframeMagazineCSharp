@@ -5,6 +5,7 @@
 
 using Core;
 using Core.Interfaces;
+using Core.Models;
 using StarsPyGame.Models;
 using System;
 using System.Collections.Generic;
@@ -45,26 +46,14 @@ namespace StarsPyGame
         private readonly IRandom _random;
 
         private List<Star> _starList;
-
-        private double _warpFactor = 0.0;
+        private double _warpFactor = MIN_WARP_FACTOR;
 
         public Stars(ITimerFactory timerFactory, IRandom random)
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _random = random;
-
             _starList = new List<Star>();
-
-            // Jump-start the star field
-            for (int i = 0; i < 30; i++)
-            {
-                Update(TimeSpan.FromSeconds(0.5), null);
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                Update(TimeSpan.FromSeconds(1 / 60), null);
-            }
+            InitialiseStarField();
         }
 
         public override void Draw(Graphics g)
@@ -96,43 +85,48 @@ namespace StarsPyGame
                 var directionY = Math.Sin(angle);
                 var distance = _random.Next(25 + TRAIL_LENGTH, 100);
                 var position = new Point((int)(CENTER_X + (directionX * distance)), (int)(CENTER_Y + (directionY * distance)));
-                var velcoityX = speed * directionX;
-                var velocityY = speed * directionY;
+                var velocity = new Velocity(speed * directionX, speed * directionY);
 
-                _starList.Add(new Star(position, velcoityX, velocityY));
+                _starList.Add(new Star(position, velocity));
             }
 
             // Update the positions of stars
             foreach (var star in _starList)
             {
                 // Move according to speed and warp factor
-                star.CurrentPosition = new Point((int)(star.CurrentPosition.X + (star.VelocityX * _warpFactor * timeSinceLastUpdate.TotalSeconds)),
-                    (int)(star.CurrentPosition.Y + (star.VelocityY * _warpFactor * timeSinceLastUpdate.TotalSeconds)));
+                star.UpdateStartAndEndPositions(_warpFactor, timeSinceLastUpdate);
 
                 // Grow brighter
-                star.Brightness = (int)Math.Min(star.Brightness + (_warpFactor * 200 * timeSinceLastUpdate.TotalSeconds), star.Speed);
+                star.UpdateBrightness(_warpFactor, timeSinceLastUpdate);
 
                 // Get faster
-                star.VelocityX = star.VelocityX * Math.Pow(2, timeSinceLastUpdate.TotalSeconds);
-                star.VelocityY = star.VelocityY * Math.Pow(2, timeSinceLastUpdate.TotalSeconds);
+                star.UpdateVelocity(timeSinceLastUpdate);
             }
 
             // Drop any stars that are completely off-screen
-            _starList.RemoveAll(x => IsOutsideScreenBounds(x.CalculateEndPosition(_warpFactor)));
+            _starList.RemoveAll(star => IsOutsideScreenBounds(star.EndPosition));
         }
 
-        // TODO move to Core
-        private bool IsOutsideScreenBounds(Point endPosition)
+        private void InitialiseStarField()
         {
-            return endPosition.X < 0 || endPosition.X > WIDTH || endPosition.Y < 0 || endPosition.Y > HEIGHT;
+            // Jump-start the star field
+            for (int i = 0; i < 30; i++)
+            {
+                Update(TimeSpan.FromSeconds(0.5), null);
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                Update(TimeSpan.FromSeconds(1 / 60), null);
+            }
         }
 
         private void DrawStars(Graphics g)
         {
             foreach (var star in _starList)
             {
-                var pen = new Pen(Color.FromArgb(star.Brightness, star.Brightness, star.Brightness));
-                g.DrawLine(pen, star.CalculateEndPosition(_warpFactor), star.CurrentPosition);
+                 var pen = new Pen(star.LineColor);
+                 g.DrawLine(pen, star.StartPosition, star.EndPosition);
             }
         }
 
