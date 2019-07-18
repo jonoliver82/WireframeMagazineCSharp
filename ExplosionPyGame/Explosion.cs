@@ -34,7 +34,7 @@ namespace ExplosionPyGame
         {
             foreach (var particle in _explosionService.Particles)
             {
-                g.FillRectangle(particle.Brush, (int)Math.Round(particle.X), (int)Math.Round(particle.Y), 1, 1);
+                g.FillRectangle(particle.Brush, (int)Math.Round(particle.Position.X), (int)Math.Round(particle.Position.Y), 1, 1);
             }
         }
 
@@ -53,7 +53,7 @@ namespace ExplosionPyGame
             var y = _random.Next(HEIGHT);
 
             // call the explosion function for that position
-            _explosionService.Add(x, y);
+            _explosionService.Add(new PointF(x, y));
         }
     }
 }

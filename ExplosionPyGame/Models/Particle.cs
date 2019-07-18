@@ -3,6 +3,7 @@
 // Copyright (c) jonoliver82, 2019
 // **********************************************************************************
 
+using Core.Models;
 using System;
 using System.Drawing;
 
@@ -10,29 +11,25 @@ namespace ExplosionPyGame.Models
 {
     public class Particle
     {
+        private const double DEFAULT_DRAG = 0.8;
+
         private static SolidBrush _brush = new SolidBrush(Color.FromArgb(255, 230, 128));
 
-        public Particle(double x, double y, double velocityX, double velocityY, TimeSpan age)
+        public Particle(PointF position, Velocity velocity, TimeSpan age)
         {
-            X = x;
-            Y = y;
-            VelocityX = velocityX;
-            VelocityY = velocityY;
+            Position = position;
+            Velocity = velocity;
             Age = age;
         }
 
-        public double X { get; set; }
+        public PointF Position { get; }
 
-        public double Y { get; set; }
+        public Velocity Velocity { get; }
 
-        public TimeSpan Age { get; set; }
-
-        public double VelocityX { get; set; }
-
-        public double VelocityY { get; set; }
+        public TimeSpan Age { get; }
 
         public SolidBrush Brush => _brush;
 
-        public double Drag => 0.8;
+        public double Drag => DEFAULT_DRAG;
     }
 }

@@ -33,7 +33,7 @@ namespace Core.Models
 
         /// <summary>
         /// Return the Euclidean norm, sqrt(x*x + y*y). This is the length of the vector from the origin to point (x, y)
-        /// Python: Math.Hypot(*vel)
+        /// Python: Math.Hypot(*vel).
         /// </summary>
         public double Speed()
         {

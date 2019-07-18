@@ -6,6 +6,7 @@
 using ExplosionPyGame.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace ExplosionPyGame.Interfaces
 {
@@ -13,7 +14,7 @@ namespace ExplosionPyGame.Interfaces
     {
         IEnumerable<Particle> Particles { get; }
 
-        void Add(int x, int y);
+        void Add(PointF position);
 
         void UpdateParticles(TimeSpan timeSinceLastUpdate);
     }
