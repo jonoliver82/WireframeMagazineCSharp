@@ -3,35 +3,48 @@
 // Copyright (c) jonoliver82, 2019
 // **********************************************************************************
 
+using Core.Models;
 using System.Drawing;
 
 namespace JumpPhysicsPyGame.Models
 {
     public class Player
     {
-        public Player(int x, int y, Image sprite, int width, int height, double jumpVelocity, double xVelocity, double yVelocity, double gravity)
+        public Player(Point position, Image sprite, Size size, double jumpVelocity, Velocity velocity, double gravity)
         {
-            Position = new Point(x, y);
+            Position = position;
             Sprite = sprite;
-            Size = new Size(width, height);
+            Size = size;
             JumpVelocity = jumpVelocity;
-            XVelocity = xVelocity;
-            YVelocity = yVelocity;
+            Velocity = velocity;
             Gravity = gravity;
         }
 
-        public Image Sprite { get; set; }
+        public Image Sprite { get; }
 
         public Point Position { get; set; }
 
-        public Size Size { get; set; }
+        public Size Size { get; }
 
-        public double YVelocity { get; set; }
+        public Velocity Velocity { get; }
 
-        public double JumpVelocity { get; set; }
+        public double JumpVelocity { get; }
 
-        public double XVelocity { get; set; }
+        public double Gravity { get; }
 
-        public double Gravity { get; set; }
+        public void UpdateVelocityForGravity()
+        {
+            Velocity.Y += Gravity;
+        }
+
+        public void UpdateVelocityForJumpOnGround()
+        {
+            Velocity.Y = JumpVelocity;
+        }
+
+        public void HandleVerticalCollision()
+        {
+            Velocity.Y = 0.0;
+        }
     }
 }

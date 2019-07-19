@@ -4,8 +4,10 @@
 // **********************************************************************************
 
 using Core.Interfaces;
+using Core.Models;
 using JumpPhysicsPyGame.Interfaces;
 using JumpPhysicsPyGame.Models;
+using System.Drawing;
 
 namespace JumpPhysicsPyGame.Factories
 {
@@ -27,10 +29,10 @@ namespace JumpPhysicsPyGame.Factories
             _spriteService = spriteService;
         }
 
-        public Player Create(int x, int y)
+        public Player Create(Point position)
         {
             var sprite = _spriteService.LoadImage(FILENAME);
-            return new Player(x, y, sprite, WIDTH, HEIGHT, JUMP_VELOCITY, XVELOCITY, YVELOCITY, GRAVITY);
+            return new Player(position, sprite, new Size(WIDTH, HEIGHT), JUMP_VELOCITY, new Velocity(XVELOCITY, YVELOCITY), GRAVITY);
         }
     }
 }

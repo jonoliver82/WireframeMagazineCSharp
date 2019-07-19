@@ -41,7 +41,7 @@ namespace JumpPhysicsPyGame
                 { new Rectangle(600, 600, 100, 20) },
             };
 
-            _player = _playerFactory.Create(50, 450);
+            _player = _playerFactory.Create(new Point(50, 450));
         }
 
         public override void Draw(Graphics g)
@@ -58,12 +58,12 @@ namespace JumpPhysicsPyGame
 
             if ((KeyboardState[Keys.Left] || KeyboardState[Keys.A]) && _player.Position.X > 0)
             {
-                newX -= _player.XVelocity;
+                newX -= _player.Velocity.X;
             }
 
             if ((KeyboardState[Keys.Right] || KeyboardState[Keys.D]) && _player.Position.X < 780)
             {
-                newX += _player.XVelocity;
+                newX += _player.Velocity.X;
             }
 
             // Create rectangle for the new x position
@@ -86,10 +86,10 @@ namespace JumpPhysicsPyGame
             double newY = _player.Position.Y;
 
             // Acceleration is rate of change of velocity
-            _player.YVelocity += _player.Gravity;
+            _player.UpdateVelocityForGravity();
 
             // Velocity is rate of change of position
-            newY += _player.YVelocity;
+            newY += _player.Velocity.Y;
 
             // Create rectangle for the new y position
             var newPlayerPositionY = new Rectangle(_player.Position.X, (int)newY, _player.Size.Width, _player.Size.Height);
@@ -117,7 +117,7 @@ namespace JumpPhysicsPyGame
             // Player no longer has vertical velocity if colliding with a platform
             if (yCollision)
             {
-                _player.YVelocity = 0;
+                _player.HandleVerticalCollision();
             }
             else
             {
@@ -128,7 +128,7 @@ namespace JumpPhysicsPyGame
             // Pressing space sets a negative vertical velocity only if player is on the ground
             if (KeyboardState[Keys.Space] && playerOnGround)
             {
-                _player.YVelocity = _player.JumpVelocity;
+                _player.UpdateVelocityForJumpOnGround();
             }
         }
 
