@@ -3,6 +3,7 @@
 // Copyright (c) jonoliver82, 2019
 // **********************************************************************************
 
+using Core.Models;
 using System.Drawing;
 
 namespace BreakoutPyGame.Models
@@ -16,6 +17,7 @@ namespace BreakoutPyGame.Models
         public Ball(int x, int y, int width, int height)
         {
             _rect = new Rectangle(x, y, width, height);
+            Velocity = new Velocity(0, 0);
         }
 
         public Point Center
@@ -51,9 +53,7 @@ namespace BreakoutPyGame.Models
             set { _rect.X = value - _rect.Width; }
         }
 
-        public double VelocityX { get; set; }
-
-        public double VelocityY { get; set; }
+        public Velocity Velocity { get; set; }
 
         public Brush Brush => _brush;
     }

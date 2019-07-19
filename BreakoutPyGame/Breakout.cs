@@ -7,6 +7,7 @@ using BreakoutPyGame.Models;
 using Core;
 using Core.Extensions;
 using Core.Interfaces;
+using Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -112,16 +113,16 @@ namespace BreakoutPyGame
 
             // Now reset the ball
             _ball.Center = new Point(WIDTH / 2, HEIGHT / 2);
-            _ball.VelocityX = _random.Next(10) < 5 ? 100 : -100;
-            _ball.VelocityY = 100;
+            _ball.Velocity.X = _random.Next(10) < 5 ? 100 : -100;
+            _ball.Velocity.Y = 100;
         }
 
         private void UpdateStep(double difference)
         {
             var x = _ball.Center.X;
             var y = _ball.Center.Y;
-            var vx = _ball.VelocityX;
-            var vy = _ball.VelocityY;
+            var vx = _ball.Velocity.X;
+            var vy = _ball.Velocity.Y;
 
             if (_ball.Top > HEIGHT)
             {
@@ -187,8 +188,7 @@ namespace BreakoutPyGame
 
             // Write back updated position and velocity
             _ball.Center = new Point(x, y);
-            _ball.VelocityX = vx;
-            _ball.VelocityY = vy;
+            _ball.Velocity = new Velocity(vx, vy);
         }
     }
 }
