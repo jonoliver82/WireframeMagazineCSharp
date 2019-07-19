@@ -3,6 +3,7 @@
 // Copyright (c) jonoliver82, 2019
 // **********************************************************************************
 
+using Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,15 +16,16 @@ namespace MissilesPyGame.Models
         private const int GRAVITY = 5;
         private const int TRAIL_LENGTH = 1000;
         private const int TRAIL_BRIGHTNESS = 100;
+        private const int DEFAULT_POSITION_Y = 0;
+        private const int DEFAULT_VELOCITY_Y = 20;
 
         private const int SPEED = 4;
 
         private Color _flareColor = Color.FromArgb(255, 220, 160);
 
-        private float _x;
-        private float _y;
-        private float _vx;
-        private float _vy;
+        private PointF _position;
+        private Velocity _velocity;
+
         private int _maxHeight;
 
         private TimeSpan _timeSpan;
@@ -34,13 +36,12 @@ namespace MissilesPyGame.Models
 
         private bool _disposedValue = false;
 
-        public Missile(float x, float vx, TimeSpan timeSpan, int maxHeight)
+        public Missile(float x, float velocityX, TimeSpan timeSpan, int maxHeight)
         {
-            _x = x;
-            _vx = vx;
+            _position = new PointF(x, DEFAULT_POSITION_Y);
+            _velocity = new Velocity(velocityX, DEFAULT_VELOCITY_Y);
+
             _timeSpan = timeSpan;
-            _y = 0;
-            _vy = 20;
             _maxHeight = maxHeight;
 
             _trail = new LinkedList<PointF>();
@@ -51,18 +52,18 @@ namespace MissilesPyGame.Models
         public void Update(TimeSpan timeSinceLastUpdate)
         {
             _timeSpan += timeSinceLastUpdate;
-            var uy = _vy;
+            var uy = _velocity.Y;
 
             // Increase y velocity
-            _vy += (float)(GRAVITY * (timeSinceLastUpdate.TotalSeconds * SPEED));
+            _velocity.Y += (float)(GRAVITY * (timeSinceLastUpdate.TotalSeconds * SPEED));
 
             // Calculate new y position
-            _y += (float)(1.0 * (uy + _vy) * (timeSinceLastUpdate.TotalSeconds * SPEED));
+            _position.Y += (float)(1.0 * (uy + _velocity.Y) * (timeSinceLastUpdate.TotalSeconds * SPEED));
 
             // Calcualte new x position
-            _x += (float)(_vx * (timeSinceLastUpdate.TotalSeconds * SPEED));
+            _position.X += (float)(_velocity.X * (timeSinceLastUpdate.TotalSeconds * SPEED));
 
-            _trail.AddFirst(new PointF(_x, _y));
+            _trail.AddFirst(_position);
         }
 
         public bool IsTrailOffBottomOfScreen()
@@ -90,13 +91,13 @@ namespace MissilesPyGame.Models
                 g.DrawLine(pen, start, end);
             }
 
-            g.FillEllipse(_flareBrush, new RectangleF(_x - 2, _y - 2, 4, 4));
+            g.FillEllipse(_flareBrush, new RectangleF(_position.X - 2, _position.Y - 2, 4, 4));
 
             // This small flickering lens flare makes it look like the missile's exhaust is very bright
             var flareLength = (float)(4 + (Math.Sin(_timeSpan.TotalSeconds) * 2) + (Math.Sin(_timeSpan.TotalSeconds * 5) * 1));
             g.DrawLine(_flarePen,
-                new PointF(_x - flareLength, _y),
-                new PointF(_x + flareLength, _y));
+                new PointF(_position.X - flareLength, _position.Y),
+                new PointF(_position.X + flareLength, _position.Y));
         }
 
         public void Dispose()
