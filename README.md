@@ -4,6 +4,8 @@ Issue 1 - [Explosion](https://github.com/Wireframe-Magazine/Wireframe-1)
 
 Issue 3 - [Parallax Scrolling](https://github.com/Wireframe-Magazine/Wireframe-3)
 
+Issue 4 - [Thruster Motion](https://github.com/Wireframe-Magazine/Wireframe-4)
+
 Issue 6 - [Text Adventure](https://github.com/Wireframe-Magazine/Wireframe-6/tree/master/text-adventure)
 
 Issue 6 - [Modular Sprites](https://github.com/Wireframe-Magazine/Wireframe-6/tree/master/source-code)
@@ -31,3 +33,7 @@ Doom Fire - [DoomFirePSX](https://github.com/fabiensanglard/DoomFirePSX)
 Fizzlefade - [Fizzlefade](http://fabiensanglard.net/fizzlefade/)
 
 Built in Visual Studio 2015 using .NET Framework 4.5.2
+
+TODO
+* Convert Thruster Motion to use new architecture
+* Wireframe Magazine Issue 14 onwards
