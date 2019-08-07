@@ -19,5 +19,28 @@ namespace Core.Services
         {
             return Bitmap.FromFile("Images\\" + fileName);
         }
+
+        public Bitmap Rotate(Image source, float angle)
+        {
+            // create a new empty bitmap to hold rotated image
+            Bitmap result = new Bitmap(source.Width, source.Height);
+
+            // make a graphics object from the empty bitmap
+            using (Graphics g = Graphics.FromImage(result))
+            {
+                // move rotation point to center of image
+                g.TranslateTransform((float)source.Width / 2, (float)source.Height / 2);
+
+                g.RotateTransform(angle);
+
+                // move image back
+                g.TranslateTransform(-(float)source.Width / 2, -(float)source.Height / 2);
+
+                // draw passed in image onto graphics object
+                g.DrawImage(source, new Point(0, 0));
+            }
+
+            return result;
+        }
     }
 }

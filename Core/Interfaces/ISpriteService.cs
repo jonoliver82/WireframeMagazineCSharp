@@ -12,5 +12,7 @@ namespace Core.Interfaces
         Image Load(string relativeFilePath);
 
         Image LoadImage(string fileName);
+
+        Bitmap Rotate(Image source, float angle);
     }
 }

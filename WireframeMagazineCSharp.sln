@@ -40,7 +40,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BombermanPyGame", "Bomberma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarsPyGame", "StarsPyGame\StarsPyGame.csproj", "{2C1C0633-B493-4159-A34F-749EDD4D7427}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThrusterMotion", "ThrusterMotion\ThrusterMotion.csproj", "{23C5BACC-1AF0-46ED-815F-06FBD4FDD721}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThrusterMotionPyGame", "ThrusterMotion\ThrusterMotionPyGame.csproj", "{23C5BACC-1AF0-46ED-815F-06FBD4FDD721}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

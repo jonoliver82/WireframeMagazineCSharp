@@ -1,4 +1,9 @@
-﻿using Autofac;
+﻿// **********************************************************************************
+// Filename					- Program.cs
+// Copyright (c) jonoliver82, 2019
+// **********************************************************************************
+
+using Autofac;
 using Core;
 using Core.Adapters;
 using Core.Factories;
@@ -6,12 +11,11 @@ using Core.Interfaces;
 using Core.Services;
 using Core.Views;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThrusterMotionPyGame.Factories;
+using ThrusterMotionPyGame.Interfaces;
 
-namespace ThrusterMotion
+namespace ThrusterMotionPyGame
 {
     public static class Program
     {
@@ -36,6 +40,7 @@ namespace ThrusterMotion
             builder.RegisterType<TimerFactory>().As<ITimerFactory>();
             builder.RegisterType<WindowsFormsApplicationService>().As<IApplicationService>();
 
+            builder.RegisterType<SpaceshipFactory>().As<ISpaceshipFactory>();
             builder.RegisterType<ThrusterMotion>().As<PyGame>();
             builder.RegisterType<DefaultPyGameForm>().As<Form>();
 
