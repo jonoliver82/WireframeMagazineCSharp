@@ -4,6 +4,7 @@
 // **********************************************************************************
 
 using Core.Interfaces;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace Core.Services
@@ -18,6 +19,17 @@ namespace Core.Services
         public Image LoadImage(string fileName)
         {
             return Bitmap.FromFile("Images\\" + fileName);
+        }
+
+        public Image[] LoadImages(params string[] fileNames)
+        {
+            var result = new List<Image>();
+            foreach (var file in fileNames)
+            {
+                result.Add(LoadImage(file));
+            }
+
+            return result.ToArray();
         }
 
         public Bitmap Rotate(Image source, float angle)

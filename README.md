@@ -24,6 +24,8 @@ Issue 12 - [Bomberman](https://github.com/Wireframe-Magazine/Wireframe-12)
 
 Issue 13 - [Stars](https://github.com/Wireframe-Magazine/Wireframe-13)
 
+Issue 14 - [WalkCycle](https://github.com/Wireframe-Magazine/Wireframe-14)
+
 Additional projects using the same Core classes:
 
 Water Ripple - [2D Water](https://web.archive.org/web/20160418004149/http://freespace.virgin.net/hugo.elias/graphics/x_water.htm)
@@ -35,5 +37,4 @@ Fizzlefade - [Fizzlefade](http://fabiensanglard.net/fizzlefade/)
 Built in Visual Studio 2015 using .NET Framework 4.5.2
 
 TODO
-* Convert Thruster Motion to use new architecture
-* Wireframe Magazine Issue 14 onwards
+* Wireframe Magazine Issue 15 onwards
