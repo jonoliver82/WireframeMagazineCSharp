@@ -23,22 +23,25 @@ namespace WalkCyclePyGame
         private const int RIGHT_BOUND = WIDTH - 80;
 
         private readonly IStateFactory _stateFactory;
+        private readonly IStateChangeRecorder _stateChangeRecorder;
 
         private Player _player;
 
         public WalkCycle(IPlayerFactory playerFactory,
             IStateFactory stateFactory,
-            ITimerFactory timerFactory)
+            ITimerFactory timerFactory,
+            IStateChangeRecorder stateChangeRecorder)
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _player = playerFactory.Create(new Point(375, 100), new Bounds(0, LEFT_BOUND, HEIGHT, RIGHT_BOUND));
             _stateFactory = stateFactory;
+            _stateChangeRecorder = stateChangeRecorder;
+
+            _stateChangeRecorder.Start();
 
             // Subscribe to state change request events from the player
             // This decouples the player object from the mechanism to change its own state - the player object does not
             // need to have a reference to the state factory. In addition, other objects may also subscribe to the change of state
-            // eg for recording actions
-            // TODO create a player action recorder
             _player.ChangeState += _player_ChangeState;
         }
 
@@ -57,6 +60,10 @@ namespace WalkCyclePyGame
             {
                 _player.TryMoveRight();
             }
+            else if (KeyboardState[Keys.S])
+            {
+                _stateChangeRecorder.LogAndReset();
+            }
             else
             {
                 _player.Stand();
@@ -71,6 +78,7 @@ namespace WalkCyclePyGame
             if (_player.WalkingState.State != e.DesiredState)
             {
                 _player.WalkingState = _stateFactory.Create(e.DesiredState);
+                _stateChangeRecorder.RecordChange(e.DesiredState);
             }
         }
     }
