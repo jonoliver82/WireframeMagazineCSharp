@@ -3,10 +3,13 @@
 // Copyright (c) jonoliver82, 2019
 // **********************************************************************************
 
+using Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using WalkCyclePyGame.Events;
+using WalkCyclePyGame.Interfaces;
 
 namespace WalkCyclePyGame.Models
 {
@@ -15,34 +18,32 @@ namespace WalkCyclePyGame.Models
         private const int ANIMATION_DELAY = 50;
 
         private Point _currentPosition;
-        private State _state;
+        private Bounds _movementBounds;
         private int _animationTimer = 0;
 
         // Index within image array for state - walk left and right have multiple frames
         private int _animationIndex = 0;
 
-        private Dictionary<State, Image[]> _stateImages;
-
-        public Player(Point start, Dictionary<State, Image[]> stateImages)
+        public Player(Point start, Bounds movementBounds)
         {
             _currentPosition = start;
-            _stateImages = stateImages;
-
-            Stand();
+            _movementBounds = movementBounds;
         }
 
-        public int X => _currentPosition.X;
+        public event EventHandler<StateTransitionEventArgs> ChangeState;
+
+        public IPlayerState WalkingState { get; set; }
 
         public void Update()
         {
-            if (_stateImages[_state].Length > 0)
+            if (WalkingState.FrameCount > 0)
             {
                 _animationTimer++;
                 if (_animationTimer > ANIMATION_DELAY)
                 {
                     _animationTimer = 0;
                     _animationIndex++;
-                    if (_animationIndex > _stateImages[_state].Length - 1)
+                    if (_animationIndex > WalkingState.FrameCount - 1)
                     {
                         _animationIndex = 0;
                     }
@@ -52,25 +53,31 @@ namespace WalkCyclePyGame.Models
 
         public void Draw(Graphics g)
         {
-            g.DrawImage(_stateImages[_state][_animationIndex], _currentPosition);
+            g.DrawImage(WalkingState[_animationIndex], _currentPosition);
         }
 
-        public void Left()
+        public void TryMoveLeft()
         {
-             _currentPosition = new Point(_currentPosition.X - 1, _currentPosition.Y);
-             _state = State.WalkLeft;
+            if (_currentPosition.X > _movementBounds.Left)
+            {
+                _currentPosition = new Point(_currentPosition.X - 1, _currentPosition.Y);
+                ChangeState?.Invoke(this, new StateTransitionEventArgs(State.WalkLeft));
+            }
         }
 
         public void Stand()
         {
-            _state = State.Stand;
             _animationIndex = 0;
+            ChangeState?.Invoke(this, new StateTransitionEventArgs(State.Stand));
         }
 
-        public void Right()
+        public void TryMoveRight()
         {
-            _currentPosition = new Point(_currentPosition.X + 1, _currentPosition.Y);
-            _state = State.WalkRight;
+            if (_currentPosition.X < _movementBounds.Right)
+            {
+                _currentPosition = new Point(_currentPosition.X + 1, _currentPosition.Y);
+                ChangeState?.Invoke(this, new StateTransitionEventArgs(State.WalkRight));
+            }
         }
     }
 }

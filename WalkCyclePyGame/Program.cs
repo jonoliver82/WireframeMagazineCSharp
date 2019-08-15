@@ -14,6 +14,7 @@ using System;
 using System.Windows.Forms;
 using WalkCyclePyGame.Factories;
 using WalkCyclePyGame.Interfaces;
+using WalkCyclePyGame.Services;
 
 namespace WalkCyclePyGame
 {
@@ -36,11 +37,15 @@ namespace WalkCyclePyGame
             builder.RegisterType<RandomAdapter>().As<IRandom>();
             builder.RegisterType<DateTimeAdapter>().As<IDateTimeService>();
             builder.RegisterType<GraphicsService>().As<IGraphicsService>();
+
+            // Decorate the core sprite service with our cached version
             builder.RegisterType<SpriteService>().As<ISpriteService>();
+            builder.RegisterDecorator<CachedSpriteService, ISpriteService>();
+
             builder.RegisterType<TimerFactory>().As<ITimerFactory>();
             builder.RegisterType<WindowsFormsApplicationService>().As<IApplicationService>();
 
-            builder.RegisterType<PlayerFactory>().As<IPlayerFactory>();
+            builder.RegisterType<StateFactory>().As<IStateFactory>();
             builder.RegisterType<WalkCycle>().As<PyGame>();
             builder.RegisterType<DefaultPyGameForm>().As<Form>();
 

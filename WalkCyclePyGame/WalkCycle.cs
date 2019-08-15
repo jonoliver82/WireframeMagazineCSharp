@@ -5,9 +5,11 @@
 
 using Core;
 using Core.Interfaces;
+using Core.Models;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using WalkCyclePyGame.Events;
 using WalkCyclePyGame.Interfaces;
 using WalkCyclePyGame.Models;
 
@@ -17,13 +19,26 @@ namespace WalkCyclePyGame
     {
         private const int WIDTH = 800;
         private const int HEIGHT = 300;
+        private const int LEFT_BOUND = 10;
+        private const int RIGHT_BOUND = WIDTH - 80;
+
+        private readonly IStateFactory _stateFactory;
 
         private Player _player;
 
-        public WalkCycle(IPlayerFactory playerFactory, ITimerFactory timerFactory)
+        public WalkCycle(IStateFactory stateFactory,
+            ITimerFactory timerFactory)
             : base(WIDTH, HEIGHT, timerFactory)
         {
-            _player = playerFactory.Create(new Point(375, 100));
+            _player = new Player(new Point(375, 100), new Bounds(0, LEFT_BOUND, HEIGHT, RIGHT_BOUND));
+            _stateFactory = stateFactory;
+
+            // Subscribe to state change request events from the player
+            // This decouples the player object from the mechanism to change its own state - the player object does not
+            // need to have a reference to the state factory. In addition, other objects may also subscribe to the change of state
+            // eg for recording actions
+            // TODO create a player action recorder
+            _player.ChangeState += _player_ChangeState;
         }
 
         public override void Draw(Graphics g)
@@ -35,17 +50,11 @@ namespace WalkCyclePyGame
         {
             if (KeyboardState[Keys.Left] || KeyboardState[Keys.A])
             {
-                if (_player.X > 10)
-                {
-                    _player.Left();
-                }
+                _player.TryMoveLeft();
             }
             else if (KeyboardState[Keys.Right] || KeyboardState[Keys.D])
             {
-                if (_player.X < WIDTH - 80)
-                {
-                    _player.Right();
-                }
+                _player.TryMoveRight();
             }
             else
             {
@@ -53,6 +62,11 @@ namespace WalkCyclePyGame
             }
 
             _player.Update();
+        }
+
+        private void _player_ChangeState(object sender, StateTransitionEventArgs e)
+        {
+            _player.WalkingState = _stateFactory.Create(e.DesiredState);
         }
     }
 }

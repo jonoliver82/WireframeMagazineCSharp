@@ -52,6 +52,7 @@
     <Compile Include="Adapters\DateTimeAdapter.cs" />
     <Compile Include="Adapters\RandomAdapter.cs" />
     <Compile Include="Extensions\MathExtensions.cs" />
+    <Compile Include="Models\Bounds.cs" />
     <Compile Include="Models\Velocity.cs" />
     <Compile Include="Views\DefaultPyGameForm.cs">
       <SubType>Form</SubType>

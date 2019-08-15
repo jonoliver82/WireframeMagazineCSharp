@@ -52,12 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factories\PlayerFactory.cs" />
-    <Compile Include="Interfaces\IPlayerFactory.cs" />
+    <Compile Include="Events\StateTransitionEventArgs.cs" />
+    <Compile Include="Factories\StateFactory.cs" />
+    <Compile Include="Interfaces\IPlayerState.cs" />
+    <Compile Include="Interfaces\IStateFactory.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CachedSpriteService.cs" />
+    <Compile Include="States\Stand.cs" />
+    <Compile Include="States\WalkLeft.cs" />
+    <Compile Include="States\WalkRight.cs" />
     <Compile Include="WalkCycle.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

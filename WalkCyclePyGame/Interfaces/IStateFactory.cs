@@ -1,14 +1,14 @@
 ﻿// **********************************************************************************
-// Filename					- State.cs
+// Filename					- IStateFactory.cs
 // Copyright (c) jonoliver82, 2019
 // **********************************************************************************
 
-namespace WalkCyclePyGame.Models
+using WalkCyclePyGame.Models;
+
+namespace WalkCyclePyGame.Interfaces
 {
-    public enum State
+    public interface IStateFactory
     {
-        Stand,
-        WalkLeft,
-        WalkRight,
+        IPlayerState Create(State state);
     }
 }
