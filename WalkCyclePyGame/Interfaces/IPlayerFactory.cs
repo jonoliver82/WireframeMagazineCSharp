@@ -1,19 +1,16 @@
 ﻿// **********************************************************************************
-// Filename					- IPlayerState.cs
+// Filename					- IPlayerFactory.cs
 // Copyright (c) jonoliver82, 2019
 // **********************************************************************************
 
+using Core.Models;
 using System.Drawing;
 using WalkCyclePyGame.Models;
 
 namespace WalkCyclePyGame.Interfaces
 {
-    public interface IPlayerState
+    public interface IPlayerFactory
     {
-        State State { get; }
-
-        int FrameCount { get; }
-
-        Image this[int index] { get; }
+        Player Create(Point startPosition, Bounds movementBounds);
     }
 }

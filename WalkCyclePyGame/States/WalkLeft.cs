@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using WalkCyclePyGame.Interfaces;
+using WalkCyclePyGame.Models;
 
 namespace WalkCyclePyGame.States
 {
@@ -18,6 +19,8 @@ namespace WalkCyclePyGame.States
         {
             _images = images.ToList();
         }
+
+        public State State => State.WalkLeft;
 
         public int FrameCount => _images.Count;
 

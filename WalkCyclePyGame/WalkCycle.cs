@@ -26,11 +26,12 @@ namespace WalkCyclePyGame
 
         private Player _player;
 
-        public WalkCycle(IStateFactory stateFactory,
+        public WalkCycle(IPlayerFactory playerFactory,
+            IStateFactory stateFactory,
             ITimerFactory timerFactory)
             : base(WIDTH, HEIGHT, timerFactory)
         {
-            _player = new Player(new Point(375, 100), new Bounds(0, LEFT_BOUND, HEIGHT, RIGHT_BOUND));
+            _player = playerFactory.Create(new Point(375, 100), new Bounds(0, LEFT_BOUND, HEIGHT, RIGHT_BOUND));
             _stateFactory = stateFactory;
 
             // Subscribe to state change request events from the player
@@ -66,7 +67,11 @@ namespace WalkCyclePyGame
 
         private void _player_ChangeState(object sender, StateTransitionEventArgs e)
         {
-            _player.WalkingState = _stateFactory.Create(e.DesiredState);
+            // Only change state if necessary
+            if (_player.WalkingState.State != e.DesiredState)
+            {
+                _player.WalkingState = _stateFactory.Create(e.DesiredState);
+            }
         }
     }
 }

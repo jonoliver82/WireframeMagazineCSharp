@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\StateTransitionEventArgs.cs" />
+    <Compile Include="Factories\PlayerFactory.cs" />
     <Compile Include="Factories\StateFactory.cs" />
+    <Compile Include="Interfaces\IPlayerFactory.cs" />
     <Compile Include="Interfaces\IPlayerState.cs" />
     <Compile Include="Interfaces\IStateFactory.cs" />
     <Compile Include="Models\Player.cs" />

@@ -45,6 +45,7 @@ namespace WalkCyclePyGame
             builder.RegisterType<TimerFactory>().As<ITimerFactory>();
             builder.RegisterType<WindowsFormsApplicationService>().As<IApplicationService>();
 
+            builder.RegisterType<PlayerFactory>().As<IPlayerFactory>();
             builder.RegisterType<StateFactory>().As<IStateFactory>();
             builder.RegisterType<WalkCycle>().As<PyGame>();
             builder.RegisterType<DefaultPyGameForm>().As<Form>();
