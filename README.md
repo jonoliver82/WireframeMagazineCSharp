@@ -24,7 +24,9 @@ Issue 12 - [Bomberman](https://github.com/Wireframe-Magazine/Wireframe-12)
 
 Issue 13 - [Stars](https://github.com/Wireframe-Magazine/Wireframe-13)
 
-Issue 14 - [WalkCycle](https://github.com/Wireframe-Magazine/Wireframe-14)
+Issue 14 - [Walk Cycle](https://github.com/Wireframe-Magazine/Wireframe-14)
+
+Issue 15 - [Isometric Map](https://github.com/Wireframe-Magazine/Wireframe-15)
 
 Additional projects using the same Core classes:
 
@@ -37,4 +39,4 @@ Fizzlefade - [Fizzlefade](http://fabiensanglard.net/fizzlefade/)
 Built in Visual Studio 2015 using .NET Framework 4.5.2
 
 TODO
-* Wireframe Magazine Issue 15 onwards
+* Wireframe Magazine Issue 16 onwards
