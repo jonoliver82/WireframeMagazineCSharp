@@ -6,6 +6,7 @@
 using Core;
 using Core.Interfaces;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -17,7 +18,7 @@ namespace IsometricMapPyGame
         private const int HEIGHT = 400;
 
         private const int MAP_START_X = 268;
-        private const int MAP_START_Y = -100;
+        private const int MAP_START_Y = -64;
 
         private const int MAP_WIDTH = 20;
         private const int MAP_HEIGHT = 20;
@@ -35,7 +36,7 @@ namespace IsometricMapPyGame
             _mapPosition = new Point(MAP_START_X, -MAP_START_Y);
             _mapBlocks = new bool[MAP_WIDTH, MAP_HEIGHT, MAP_DEPTH];
 
-            InitialiseMap();
+            InitialiseProblemMap();
         }
 
         /// <summary>
@@ -86,6 +87,13 @@ namespace IsometricMapPyGame
             {
                 _mapPosition = new Point(_mapPosition.X, _mapPosition.Y + 4);
             }
+        }
+
+        private void InitialiseProblemMap()
+        {
+            _mapBlocks[0, 0, 0] = true;
+            _mapBlocks[1, 0, 0] = true;
+            _mapBlocks[0, 1, 0] = true;
         }
 
         private void InitialiseMap()
