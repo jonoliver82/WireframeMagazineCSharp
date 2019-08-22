@@ -38,7 +38,6 @@ namespace IsometricMapPyGame
             _mapBlocks = new bool[MAP_WIDTH, MAP_HEIGHT, MAP_DEPTH];
 
             InitialiseMap();
-
         }
 
         /// <summary>
