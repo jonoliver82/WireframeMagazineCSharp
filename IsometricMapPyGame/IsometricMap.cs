@@ -23,6 +23,7 @@ namespace IsometricMapPyGame
         private const int MAP_WIDTH = 20;
         private const int MAP_HEIGHT = 20;
         private const int MAP_DEPTH = 3;
+        private const int SCROLL_SPEED = 2;
 
         private bool[,,] _mapBlocks;
         private Point _mapPosition;
@@ -36,7 +37,8 @@ namespace IsometricMapPyGame
             _mapPosition = new Point(MAP_START_X, -MAP_START_Y);
             _mapBlocks = new bool[MAP_WIDTH, MAP_HEIGHT, MAP_DEPTH];
 
-            InitialiseProblemMap();
+            InitialiseMap();
+
         }
 
         /// <summary>
@@ -70,22 +72,22 @@ namespace IsometricMapPyGame
         {
             if (KeyboardState[Keys.Left] || KeyboardState[Keys.A])
             {
-                _mapPosition = new Point(_mapPosition.X - 4, _mapPosition.Y);
+                _mapPosition = new Point(_mapPosition.X - SCROLL_SPEED, _mapPosition.Y);
             }
 
             if (KeyboardState[Keys.Right] || KeyboardState[Keys.D])
             {
-                _mapPosition = new Point(_mapPosition.X + 4, _mapPosition.Y);
+                _mapPosition = new Point(_mapPosition.X + SCROLL_SPEED, _mapPosition.Y);
             }
 
             if (KeyboardState[Keys.Up] || KeyboardState[Keys.W])
             {
-                _mapPosition = new Point(_mapPosition.X, _mapPosition.Y - 4);
+                _mapPosition = new Point(_mapPosition.X, _mapPosition.Y - SCROLL_SPEED);
             }
 
             if (KeyboardState[Keys.Down] || KeyboardState[Keys.S])
             {
-                _mapPosition = new Point(_mapPosition.X, _mapPosition.Y + 4);
+                _mapPosition = new Point(_mapPosition.X, _mapPosition.Y + SCROLL_SPEED);
             }
         }
 
@@ -123,6 +125,12 @@ namespace IsometricMapPyGame
                         MakePyramid(x, y);
                     }
                 }
+            }
+
+            // Make an entrance gap
+            for (int i = 0; i < 5; i++)
+            {
+                _mapBlocks[i, 0, 0] = false;
             }
         }
 
