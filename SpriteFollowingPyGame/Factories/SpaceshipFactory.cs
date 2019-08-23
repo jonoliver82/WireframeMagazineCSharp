@@ -13,6 +13,7 @@ namespace SpriteFollowingPyGame.Factories
 {
     public class SpaceshipFactory : ISpaceshipFactory
     {
+        private const int SPEED = 4;
         private readonly ISpriteService _spriteService;
 
         public SpaceshipFactory(ISpriteService spriteService)
@@ -23,7 +24,7 @@ namespace SpriteFollowingPyGame.Factories
         public Spaceship Create(Point startPosition)
         {
             var normalImage = _spriteService.LoadImage("spaceship.png");
-            return new Spaceship(startPosition, normalImage, 4);
+            return new Spaceship(startPosition, normalImage, SPEED);
         }
     }
 }

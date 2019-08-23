@@ -28,6 +28,8 @@ Issue 14 - [Walk Cycle](https://github.com/Wireframe-Magazine/Wireframe-14)
 
 Issue 15 - [Isometric Map](https://github.com/Wireframe-Magazine/Wireframe-15)
 
+Issue 16 - [Sprite Following](https://github.com/Wireframe-Magazine/Wireframe-16)
+
 Additional projects using the same Core classes:
 
 Water Ripple - [2D Water](https://web.archive.org/web/20160418004149/http://freespace.virgin.net/hugo.elias/graphics/x_water.htm)
@@ -39,4 +41,4 @@ Fizzlefade - [Fizzlefade](http://fabiensanglard.net/fizzlefade/)
 Built in Visual Studio 2015 using .NET Framework 4.5.2
 
 TODO
-* Wireframe Magazine Issue 16 onwards
+* Wireframe Magazine Issue 17 onwards

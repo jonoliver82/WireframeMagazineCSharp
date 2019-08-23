@@ -5,12 +5,13 @@
 
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace SpriteFollowingPyGame.Models
 {
     public class Spaceship
     {
-        private List<Point> _previousPositions;
+        private Queue<Point> _previousPositions;
 
         public Spaceship(Point startPosition, Image sprite, int speed)
         {
@@ -18,7 +19,7 @@ namespace SpriteFollowingPyGame.Models
             Sprite = sprite;
             Speed = speed;
 
-            _previousPositions = new List<Point>();
+            _previousPositions = new Queue<Point>();
         }
 
         public Image Sprite { get; private set; }
@@ -31,21 +32,22 @@ namespace SpriteFollowingPyGame.Models
         {
             for (int i = 0; i < 100; i++)
             {
-                _previousPositions.Add(new Point(Position.X - (i * Speed), Position.Y));
+                _previousPositions.Enqueue(new Point(Position.X - (i * Speed), Position.Y));
             }
         }
 
         public void StorePosition()
         {
-            // TODO add the current position to the list of previous positions
-            // and ensure the list contains at most 100 positions
-            // Avoid recreating the list...
-            _previousPositions.Add(Position);
+            // Note python implementation is:
+            // previouspositions = [(spaceship.x, spaceship.y)] +previouspositions[:99]
+            _previousPositions.Dequeue();
+            _previousPositions.Enqueue(Position);
         }
 
         public Point PreviousPosition(int index)
         {
-            return _previousPositions[index];
+            // Note this is an O(n) opertion to access the queue
+            return _previousPositions.ElementAt(index);
         }
 
         public void MoveUp()
