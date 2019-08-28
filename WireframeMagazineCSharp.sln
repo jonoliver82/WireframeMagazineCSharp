@@ -50,6 +50,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpriteFollowingPyGame", "Sp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LemmingsPyGame", "LemmingsPyGame\LemmingsPyGame.csproj", "{A643B65F-8D8E-4F46-BAC7-9981CB0A22D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonsterMazePyGame", "MonsterMazePyGame\MonsterMazePyGame.csproj", "{46D60CF4-7E36-4C4B-8899-0AAF038A8487}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -136,6 +138,10 @@ Global
 		{A643B65F-8D8E-4F46-BAC7-9981CB0A22D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A643B65F-8D8E-4F46-BAC7-9981CB0A22D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A643B65F-8D8E-4F46-BAC7-9981CB0A22D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46D60CF4-7E36-4C4B-8899-0AAF038A8487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46D60CF4-7E36-4C4B-8899-0AAF038A8487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46D60CF4-7E36-4C4B-8899-0AAF038A8487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46D60CF4-7E36-4C4B-8899-0AAF038A8487}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
