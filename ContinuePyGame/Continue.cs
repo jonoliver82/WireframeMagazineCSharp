@@ -27,10 +27,10 @@ namespace ContinuePyGame
             var gameScreen = new GameScreenState();
             var continueScreen = new ContinueScreenState();
 
-            titleScreen.AddTransitionRule(continueScreen, () => KeyboardState[Keys.Space]);
-            gameScreen.AddTransitionRule(continueScreen, () => KeyboardState[Keys.E]);
-            continueScreen.AddTransitionRule(continueScreen, () => _stateManager.Frame >= 10);
-            continueScreen.AddTransitionRule(continueScreen, () => KeyboardState[Keys.Space]);
+            titleScreen.AddTransitionRule(gameScreen, () => IsKeyPressed(Keys.Space));
+            gameScreen.AddTransitionRule(continueScreen, () => IsKeyPressed(Keys.E));
+            continueScreen.AddTransitionRule(titleScreen, IsFrameCounterGreaterThanTen);
+            continueScreen.AddTransitionRule(gameScreen, () => IsKeyPressed(Keys.Space));
 
             _stateManager = new StateManager(titleScreen);
         }
@@ -42,7 +42,17 @@ namespace ContinuePyGame
 
         public override void Update(TimeSpan timeSinceLastUpdate, Graphics g)
         {
-            _stateManager.Update();
+            _stateManager.Update(timeSinceLastUpdate);
+        }
+
+        private bool IsKeyPressed(Keys key)
+        {
+            return KeyboardState[key];
+        }
+
+        private bool IsFrameCounterGreaterThanTen()
+        {
+            return _stateManager.TimeInStateSeconds >= 10;
         }
     }
 }

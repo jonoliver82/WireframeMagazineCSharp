@@ -12,15 +12,21 @@ namespace ContinuePyGame.States
 {
     public abstract class BaseGameState : IGameState
     {
-        protected static SolidBrush _brush = new SolidBrush(Color.White);
-        protected static Font _font = new Font(FontFamily.GenericMonospace, 20.0f);
+        private static SolidBrush _brush = new SolidBrush(Color.White);
+        private static Font _font = new Font(FontFamily.GenericMonospace, 20.0f);
 
-        protected Dictionary<IGameState, Func<bool>> _rules;
+        private Dictionary<IGameState, Func<bool>> _rules;
 
         protected BaseGameState()
         {
             _rules = new Dictionary<IGameState, Func<bool>>();
         }
+
+        public Dictionary<IGameState, Func<bool>> Rules => _rules;
+
+        protected SolidBrush Brush => _brush;
+
+        protected Font Font => _font;
 
         public void AddTransitionRule(IGameState destinationState, Func<bool> predicate)
         {
@@ -29,5 +35,10 @@ namespace ContinuePyGame.States
 
         // Derived classes must implement this method
         public abstract void Draw(Graphics g);
+
+        public virtual void Update(TimeSpan timeInState)
+        {
+            // No action required in base class. Derived classes can override this method if necessary.
+        }
      }
 }

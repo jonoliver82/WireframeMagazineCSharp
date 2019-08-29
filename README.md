@@ -34,6 +34,8 @@ Issue 17 - [Lemmings](https://github.com/Wireframe-Magazine/Wireframe-17)
 
 Issue 18 - [Monster Maze](https://github.com/Wireframe-Magazine/Wireframe-18)
 
+Issue 19 - [Continue Screen](https://github.com/Wireframe-Magazine/Wireframe-19)
+
 Additional projects using the same Core classes:
 
 Water Ripple - [2D Water](https://web.archive.org/web/20160418004149/http://freespace.virgin.net/hugo.elias/graphics/x_water.htm)
@@ -45,4 +47,4 @@ Fizzlefade - [Fizzlefade](http://fabiensanglard.net/fizzlefade/)
 Built in Visual Studio 2015 using .NET Framework 4.5.2
 
 TODO
-* Wireframe Magazine Issue 19 onwards
+* Wireframe Magazine Issue 20 onwards

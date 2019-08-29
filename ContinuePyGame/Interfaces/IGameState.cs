@@ -12,9 +12,11 @@ namespace ContinuePyGame.Interfaces
 {
     public interface IGameState
     {
+        Dictionary<IGameState, Func<bool>> Rules { get; }
+
         void Draw(Graphics g);
 
-        //void Update(Dictionary<Keys, bool> keyboardState);
+        void Update(TimeSpan timeInState);
 
         void AddTransitionRule(IGameState destinationState, Func<bool> predicate);
     }

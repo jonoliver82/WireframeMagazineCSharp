@@ -13,8 +13,8 @@ namespace ContinuePyGame.States
     {
         public override void Draw(Graphics g)
         {
-            g.DrawString("Game Screen", _font, _brush, 200, 50);
-            g.DrawString("Press [e] to end game", _font, _brush, 100, 80);
+            g.DrawString("Game Screen", Font, Brush, 200, 50);
+            g.DrawString("Press [e] to end game", Font, Brush, 100, 80);
         }
     }
 }

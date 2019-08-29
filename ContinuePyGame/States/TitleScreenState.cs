@@ -11,8 +11,8 @@ namespace ContinuePyGame.States
     {
         public override void Draw(Graphics g)
         {
-            g.DrawString("Title Screen", _font, _brush, 200, 50);
-            g.DrawString("Press [space] to start", _font, _brush, 100, 80);
+            g.DrawString("Title Screen", Font, Brush, 200, 50);
+            g.DrawString("Press [space] to start", Font, Brush, 100, 80);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace Core
                 { Keys.S, false },
                 { Keys.D, false },
                 { Keys.R, false },
+                { Keys.E, false },
                 { Keys.Space, false },
             };
         }
