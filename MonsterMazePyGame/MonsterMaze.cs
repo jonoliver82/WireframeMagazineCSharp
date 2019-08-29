@@ -5,6 +5,7 @@
 
 using Core;
 using Core.Interfaces;
+using MonsterMazePyGame.Models;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -37,13 +38,8 @@ namespace MonsterMazePyGame
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
         };
 
-        // TODO create player class to hold position, direction
-        private Point _playerPosition;
+        private Player _player;
 
-        // TODO improve number definition
-        private int _playerDirection = 2;
-
-        // TODO provide better meanings
         private int[] _directionX = new int[] { -1, 0, 1, 0 };
         private int[] _directionY = new int[] { 0, 1, 0, -1 };
 
@@ -56,7 +52,8 @@ namespace MonsterMazePyGame
             : base(WIDTH, HEIGHT, timerFactory)
         {
             _background = spriteService.LoadImage("back.png");
-            _playerPosition = new Point(1, 4);
+
+            _player = new Player(new Point(1, 4), 2);
 
             // Pre-load the wall images
             _leftImages = spriteService.LoadImages("left0.png", "left1.png", "left2.png", "left3.png", "left4.png");
@@ -69,7 +66,7 @@ namespace MonsterMazePyGame
             g.DrawImage(_background, _origin);
 
             var directionMovement = 1;
-            if (_playerDirection == 1 || _playerDirection == 3)
+            if (_player.Direction == 1 || _player.Direction == 3)
             {
                 directionMovement = -1;
             }
@@ -79,14 +76,14 @@ namespace MonsterMazePyGame
             // The images are drawn back to front.
             for (int i = MAX_IMAGES; i >= 0; i--)
             {
-                var x = _playerPosition.X + (i * _directionX[_playerDirection]);
-                var y = _playerPosition.Y + (i * _directionY[_playerDirection]);
+                var x = _player.Position.X + (i * _directionX[_player.Direction]);
+                var y = _player.Position.Y + (i * _directionY[_player.Direction]);
 
                 if (x >= 0 && x < MAP_WIDTH && y >= 0 && y < MAP_HEIGHT)
                 {
                     // Left image
-                    var xLeft = x + (_directionY[_playerDirection] * directionMovement);
-                    var yLeft = y + (_directionX[_playerDirection] * directionMovement);
+                    var xLeft = x + (_directionY[_player.Direction] * directionMovement);
+                    var yLeft = y + (_directionX[_player.Direction] * directionMovement);
 
                     if (_maze[xLeft, yLeft] == 1)
                     {
@@ -94,8 +91,8 @@ namespace MonsterMazePyGame
                     }
 
                     // Right image
-                    var xRight = x - (_directionY[_playerDirection] * directionMovement);
-                    var yRight = y - (_directionX[_playerDirection] * directionMovement);
+                    var xRight = x - (_directionY[_player.Direction] * directionMovement);
+                    var yRight = y - (_directionX[_player.Direction] * directionMovement);
 
                     if (_maze[xRight, yRight] == 1)
                     {
@@ -115,43 +112,41 @@ namespace MonsterMazePyGame
         {
             if (KeyboardState[Keys.Left] || KeyboardState[Keys.A])
             {
-                _playerDirection -= 1;
-                if (_playerDirection < 0)
+                _player.Direction -= 1;
+                if (_player.Direction < 0)
                 {
-                    _playerDirection = 3;
+                    _player.Direction = 3;
                 }
             }
 
             if (KeyboardState[Keys.Right] || KeyboardState[Keys.D])
             {
-                _playerDirection += 1;
-                if (_playerDirection > 3)
+                _player.Direction += 1;
+                if (_player.Direction > 3)
                 {
-                    _playerDirection = 0;
+                    _player.Direction = 0;
                 }
             }
 
             if (KeyboardState[Keys.Up] || KeyboardState[Keys.W])
             {
-                var newX = _playerPosition.X + _directionX[_playerDirection];
-                var newY = _playerPosition.Y + _directionY[_playerDirection];
+                var newX = _player.Position.X + _directionX[_player.Direction];
+                var newY = _player.Position.Y + _directionY[_player.Direction];
 
                 if (_maze[newX, newY] == 0)
                 {
-                    _playerPosition.X = newX;
-                    _playerPosition.Y = newY;
+                    _player.Position = new Point(newX, newY);
                 }
             }
 
             if (KeyboardState[Keys.Down] || KeyboardState[Keys.S])
             {
-                var newX = _playerPosition.X - _directionX[_playerDirection];
-                var newY = _playerPosition.Y - _directionY[_playerDirection];
+                var newX = _player.Position.X - _directionX[_player.Direction];
+                var newY = _player.Position.Y - _directionY[_player.Direction];
 
                 if (_maze[newX, newY] == 0)
                 {
-                    _playerPosition.X = newX;
-                    _playerPosition.Y = newY;
+                    _player.Position = new Point(newX, newY);
                 }
             }
         }
